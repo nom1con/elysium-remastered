@@ -8488,7 +8488,8 @@ power 45 2
 hadesres 100
 goldbonus                     50 	# 50% bonus to all gold income for the player that owns this unit while it exists. 
 tradebonus                    50 	# 50% bonus to all trade income for the player that owns this unit while it exists.
-	
+gatherlifeforce
+
 selectmonster "God Emperor of the Underworld"
 power 45   3
 power -2 3 				#Good res powers
