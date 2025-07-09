@@ -1,0 +1,741 @@
+
+
+To do:
+
+Descriptions (underworld gate, shadow tribune, shadow centurion)
+ritual navn (city of the Dead)
+test
+
+AI commanders that spawn well designed Legions?
+
+
+# ------------ Senator Terrain ------------------------
+
+selectterrgroup -1081
+setname "Haunted Lands"
+addterr 16
+addterr 19
+addterr 37
+addterr 38
+addterr 87
+addterr 135
+addterr 136
+addterr 137
+addterr 138
+addterr 144
+addterr 145
+addterr 146
+addterr 147
+addterr 148
+addterr 149
+addterr 150
+addterr 151
+addterr 153
+addterr 165
+addterr 180
+addterr 181
+addterr 182
+addterr 183
+addterr 248
+addterr 292
+addterr 310
+addterr 323
+addterr 324
+addterr 325
+addterr 326
+addterr 331
+addterr 551
+
+selectterrgroup -1082
+setname "Not Haunted Lands"
+addterr 16
+addterr 19
+addterr 37
+addterr 38
+addterr 87
+addterr 135
+addterr 136
+addterr 137
+addterr 138
+addterr 144
+addterr 145
+addterr 146
+addterr 147
+addterr 148
+addterr 149
+addterr 150
+addterr 151
+addterr 153
+addterr 165
+addterr 180
+addterr 181
+addterr 182
+addterr 183
+addterr 248
+addterr 292
+addterr 310
+addterr 323
+addterr 324
+addterr 325
+addterr 326
+addterr 331
+addterr 551
+invert
+
+selectterrgroup -1083
+setname "Haunted cities and Haunted Capitoleum"
+addterr 87
+addterr 135 
+
+selectterr 87
+nostdrec
+
+selectterr 135
+nostdrec
+
+#------------ Senator Weapons -----------------------------------#
+
+newweapon     "Gladius Solis"                                               # 920
+trgrank              8 # Target: rear enemy (any enemy, preferring rear-most).
+range                1
+init                 5
+dmgtype              3 # Pierce.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+sound                1 # spear.smp (Spear)
+
+newweapon "Javelins" #can be thrown more than once
+range 3
+init 7
+dmgtype 3
+dmg 4
+mundane
+arrow
+flymode 1
+flylook 1
+flysound 19
+sound -1
+reload2 #very slow reload
+reloadsnd -1
+
+newweapon "Snake Assassination"
+trgrank              8 # Target: front enemy (any enemy in range, preferring front-most).
+range                1
+init                 2
+dmgtype              9 # poison.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+sound                1 # spear.smp (Spear)
+next             
+nextdmg             2 # d2 snake
+
+newweapon "Summon Snake" 1
+trgrank              8 # Target: Rear Enemy.
+range                3
+init                 8
+dmgtype             18 # Summon (the monster specified in the weapon's name, after "Summon ").
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+an                     # Armor negating.
+look                 1
+sound               57 # orchhit.smp (Summoning)
+
+
+#------------------------ Senator Monster Edits -------------------------------#
+
+selectmonster "Standard" #Standard has a stronger aura
+localleadership 2 #from 1
+	
+selectmonster "Triarius"
+clearmove
+	
+selectmonster "Princeps Solaris" #higher fire res and non-mundane sword, more useful in the late game. 
+clearweapons
+meleeweapon 6 "Gladius Solis" 
+fireres 75 #Up from 50
+mr 5 #up from 4
+
+selectmonster "Leo"
+mr 6
+clearweapons
+spellweapon               19   1 # Solar Magic at level 1.
+meleeweapon 6 "Gladius Solis" #not mundane
+fireres 75
+	
+selectmonster "Veles"
+clearweapons
+rangedweapon 0 "Javelins"
+meleeweapon  0 4
+	
+selectmonster "Longdead Velite"
+clearweapons
+rangedweapon 0 "Javelins"
+meleeweapon  0 4
+	
+selectmonster "Praetorian Guard"
+mor 8
+clearmove
+	
+selectmonster "God Emperor" #Now god emperors are immortal, as it should be.
+power 31 3
+immortal
+reformloc -2 #Any temple
+allitemslots
+unaging
+affres 75
+diseaseres
+immortalap 12
+	
+selectmonster "God Empress"
+immortal
+reformloc -2
+allitemslots
+unaging
+affres 75
+diseaseres
+immortalap 12
+	
+selectmonster "Dark Emperor" #Previously lost the trade bonus of the senator, probably a mistake. Now he gets it back. 
+power 45 2 
+hadesres 100
+goldbonus                     50 # 50% bonus to all gold income for the player that owns this unit while it exists. 
+tradebonus                    50 # 50% bonus to all trade income for the player that owns this unit while it exists.
+	
+selectmonster "God Emperor of the Underworld"
+power 45   3
+power -2 3 #Good res powers
+immortal
+reformloc -2
+hadesres 100
+allitemslots
+unaging
+affres 75
+diseaseres
+goldbonus                     50 # 50% bonus to all gold income for the player that owns this unit while it exists.
+tradebonus                    50 # 50% bonus to all trade income for the player that owns this unit while it exists.
+planeshift 1
+immortalap 12
+gatherlifeforce
+lifeforce 10
+	
+selectmonster "Imperial Statue" 
+gold 0 #Limitgold instead of +gold
+limitgold 2
+	
+selectmonster "Statue of the Underworld"
+gold 0 
+limitgold 1
+lifeforce 5 
+descr "In ancient times the Emperor would have put up statues of himself in any major settlement.  This has often been described as an act of vanity by many historians.  However, a few opposing theories have been put forth.  By sharing his image in both statues and coins, the Emperor would be present in the mind of every citizen.  When such an awareness reaches a certain level, it would give the Emperor a sort of divine focus or divine aegis if he so desires.  This can then be redirected and focused through the statues and there has been speculation that it would keep the citizens calm, giving them a sense of being watched at all times - which would explain the elaborate eyes in many statues. Another more sinister theory states the statues erected by Vasilis the Putrid somehow siphoned power from the living population to sustain his undead legions."
+
+selectmonster "Renatus"
+spr1 "Renatus1.tga"
+spr2 "Renatus2.tga"
+spiritsight
+descr "The first Renatus was the eldest member of the Renatae, a keeper of records, and the last in a bloodline bred for magical aptitude. Though his magic was unremarkable compared to other mages of the realm, he somehow stumbled upon the secret to immortality. He passed this knowledge to a select group of apprentices, though, curiously, only male members of the order succeeded in following his method. The path to immortality, as devised by the first Renatus, involves a peculiar mix: alchemical residues, a strong magical affinity, a strict frugal diet, and absolute celibacy. Unsurprisingly, the latter two have dissuaded most alchemists from attempting this route, grumbling that there must be an easier—or at least more enjoyable—way. Hieronyma the Clouded, a prominent skeptic, insists that a Renatus isn't truly immortal. Instead, she claims the order has perfected a method of creating body and mind duplicates of each Renatus, stored in ancient basins beneath their main palace. According to her, when one "Renatus" dies, another copy simply takes his place. Although the male Renati are regarded as the order’s public leaders, rumors persist of a secret cabal of old Renatae pulling strings from the shadows with the lofty aim of creating the perfect human. While there’s no evidence to support such claims, many heroes boast of their success in seducing a local Renata."
+
+
+#---------------------- Senator Monsters ----------------------------------------------#
+
+newmonster "Funditore"
+copyspr "Limitane Slinger"
+armor                          0 # Armor.
+hp                             4 # Hit Points.
+str                            4 # Strength.
+mor                            3 # Morale.
+mr                             4 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               0  27 # Sling: d2 Blunt damage.
+meleeweapon                0   1 # Dagger: d3 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+descr ""The slingers are most often gleaned from the rural commoners or those deeply in debt enlisting in the Legions for a chance at escaping poverty. Unable to afford arms of their own, they are instead equipped with slings and instructed to fire stones at the enemy, while letting the better-equipped legionaries do the actual fighting."
+
+newmonster "Imperial War Elephant"
+spr1 "Imperialwarelephant1.tga"
+spr2 "Imperialwarelephant2.tga"
+armor                          2 # Armor.
+hp                            58 # Hit Points.
+str                            8 # Strength.
+mor                            4 # Morale.
+mr                             2 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweaponbonus 	   0 22 #pike d5
+meleeweaponbonus	   0 22 #pike d5
+meleeweapon                7  37 # Gore: d7 Slash damage.
+battlefast                       # Can move 2 squares per turn in combat.
+animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
+trample                        4 # Can trample smaller units for this amount of damage.
+descr "War Elephants were first encountered during the third Atavic Campaign, where the maharaja fielded them to devastating effect against the closed ranks of the Imperial Legions. The beasts were eventually incorporated into the Imperial armies of the southern provinces, and are now employed as a counter to the armored knights of Elysium's feudal lords. 
+
+newmonster "Behemoth Solaris"
+spr1 "Behemothsolaris1.tga"
+spr2 "Behemothsolaris2.tga"
+armor                          2 # Armor.
+hp                            58 # Hit Points.
+str                            8 # Strength.
+mor                            4 # Morale.
+mr                             8 # Magic Resistance.
+rank                           0 # Mid rank.
+spellweaponbonus          19   2 # Solar Magic level 2
+meleeweapon                7  37 # Gore: d7 Slash damage.
+battlefast                       # Can move 2 squares per turn in combat.
+animal                           # Vulnerable to weapons and spells that only affect animals; leaves an animal corpse on death.
+trample                        4 # Can trample smaller units for this amount of damage.a
+descr "When elephants were first introduced to the Imperial armies, the Cult of the Conquering Sun quickly recognized their potential. They procured several of these majestic creatures and mounted their more daring heliodromi on top, creating a platform for truly spectacular sermons and securing a notable publicity advantage over rival cults. While initially a triumph of showmanship, the war elephants proved surprisingly effective in combat, though their tendency to panic under the bright flashes of heliodromi spells added a degree of unpredictability to the battlefield."
+
+selectmonster    "Flamen"                                                   #  159
+descr "In old times any construction of bridges and temples as well as any declaration of war demanded a sacrifice of a hecatomb to the Elysian pantheon.  An Elysian hecatomb is one hundred sheep, some of which may be goats instead as long as they can be kept under control.  The sacrifices were performed by the Flamen, who wielded considerable power at the time.  In order to balance that power, the Flamen was limited in several ways and still is.  He may not touch iron, meat, beans or living horses.  He is always required to wear the Flamen headdress, even when sleeping, and he may not look at a drawn weapon.  Some of the more creative Emperors of old added to the lists of what a Flamen could and should do.  After the gods had demanded a particularly vast number of hecatombs from Emperor Reus IV, the Emperor ruled that when the Flamen spoke on non-religious matters, he had to bow to the senior member of the Senate between each syllable.^With new cults appearing, these sacrifices became less and less important, and today the Flamen's sacrifices mainly concern less important things, such as weddings, the inauguration of a new porch and similar events. Nonetheless, the Flamen maintain the old ways and commune regularly with eudaimons of the land.  
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            4 # Strength.
+mor                            5 # Morale.
+mr                             7 # Magic Resistance.
+rank                          -1 # Back rank.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+nametype                       6 # Roman male.
+badsight
+
+newmonster "Thaumaturg"
+spr1 "Thaumaturg1.tga"
+spr2 "Thaumaturg2.tga"
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                             8 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               2   2 # Elemental magic at level 2.
+meleeweapon                0   5 # Staff: d3 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+nametype                       6 # Roman male.
+descr "Thaumaturgs are self-proclaimed miracle workers who practice magic for coin. Their skills are typically passed down through master-apprentice relationships, though many are largely self-taught. They are loosely connected but operate independently, with little allegiance to the great Cults. While their magical abilities are often exaggerated, they do possess some control over the elements, such as influencing the weather or igniting fires on command. Successful Thaumaturgs often find favor among the senatorial elite, while others earn their living by summoning rain or selling lucky charms to peasants."
+
+newmonster "Anguifer"
+spr1 "Serpentassassin1.tga"
+spr2 "Serpentassassin2.tga"
+armor                          0 # Armor.
+hp                             6 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                             4 # Magic Resistance.
+rank                          -1 # Back rank.
+meleeweapon                0 146 # Poison Dagger: d3 Pierce damage.
+assassinweapon             10 "Snake Assassination" #summon 1 snake
+rangedweapon               1 136 # "Summon Snake 
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+allitemslots                     # Has the full set of item slots.
+poisonres 100
+noleader
+descr "The Anguifer are initiates of the Serpent Cult, trained to handle the most dangerous vipers. They are frequently employed as assassins. Many senators make a point to stay in the cult's favor, to avoid the appearance of deadly serpents in their private chambers."
+ 
+newmonster "Legatus Legionis"
+spr1 "Legatuslegionis1.tga"
+spr2 "Legatuslegionis2.tga"
+armor                          1 # Armor.
+hp                             9 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                             5 # Magic Resistance.
+rank                           0 # Mid rank.
+meleeweapon                0   8 # Shortsword: d5 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+nametype                       6 # Roman male.
+armytrainer 1
+leadership 1
+descr "The Legatus is a high-ranking commander of the imperial legion. Only the most able commanders are chosen for this task. Units under their command are well organized, well trained and highly motivated." 
+
+newmonster "Dark Empress"
+spr1 "Darkempress1.tga"
+spr2 "Darkempress2.tga"
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            4 # Strength.
+mor                            5 # Morale.
+mr                             8 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               59   2 # Death at level 2.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+female                           # Female.
+nametype                      18 # Roman female.
+unique                         1
+randomitem                    75 # 75% chance to spawn with a random magic item of any type.
+randommisc                    10 # 10% chance to spawn with a random misc magic item.
+goldcarrier                  150 # Defeating this unit gives 150 Gold as spoils of war. 
+descr "Once a mage and imperial mistress, the Empress now wields considerable power from her throne.  It is rumored that she retains some loyalty to her former order, but any such suggestion in public is quickly dismissed and wise individuals refrain entirely from talking about it.  The newly minted wedding coins with the face of the Empress are popular within the College, and our headmaster seems to have an abundant supply."
+
+newmonster "God Empress of the Underworld"
+spr1 "Godempress_dark1.tga"
+spr2 "Godempress_dark2.tga"
+armor                          0 # Armor.
+hp                           144 # Hit Points.
+str                           10 # Strength.
+mor                           15 # Morale.
+mr                            10 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweaponbonus          44   3 # Sage Magic at level 3.
+spellweaponbonus          59   3 # Death Magic at level 3.
+meleeweapon               12   0 # Fist: d13 Blunt damage.
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+weaponslots                      # Only has 1 weapon and 2 misc slots.
+awe                            3 # Each time a non-mindless unit tries to attack this unit in melee, the attacker must pass a morale check with a -3 penalty, or waste the attack.
+unique                         1
+affres 75
+planeshift 1
+immortalap 12
+gatherlifeforce
+lifeforce 5
+descr "Some suggest that achieving divine status has always been the Empress’s ultimate goal, a pursuit of her magical order for generations. However, those claiming to have evidence of this have curiously departed the Empire, on solitary quests to defeat the Troll King, or grand journeys to the edge of the world. The Empress is, however, a notable patron of the sciences, generously funding the College’s pursuit of knowledge. It is widely understood that the Empress herself is not an acceptable topic of study."
+
+	# -------------- Dark Senator Units ------------------------------# 
+
+newmonster "Shadow Tribune"
+descr "When the Empire fell, its leaders met cruel and violent ends. Bound by their loyalty to the people, some refused to move on to the underworld. Their shadows linger in the ruins they once ruled, and echoes of their debates still whisper in the halls of the Senatorium. With the return of the rightful Emperor, they rise to serve again."  
+spr1 "Shadowtribune1.tga"
+spr2 "Shadowtribune2.tga"  
+armor                          0 # Armor.
+hp                            10 # Hit Points.
+str                            4 # Strength.
+mor                            8 # Morale.
+mr                             8 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon                9   1 # Dark Magic at level 1.
+meleeweapon                5 204 # Touch of the Dead: d5 Magic damage.
+float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+diseaseres                       # Disease immunity.
+ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
+banishsurv                       # Banished to Hades/Inferno/home instead of being destroyed.
+planeshift                     1 # Plane Shift: Hades. Can shift from Elysium to Hades or vice-versa for 1 AP.
+
+newmonster "Shadow Centurion"
+spr1 "Shadowcenturion1.tga"
+spr2 "Shadowcenturion2.tga"
+rank 0
+hp 10
+armor 1
+mr 6
+mor 15
+str 5
+meleeweapon 8 222
+undead
+float
+planeshift 1
+ethereal
+nametype 6
+descr "The shadow of an ancient soldier, still bound by loyalty to the Empire. Clad in the armor of a Centurion from a bygone era, he has returned to command armies of both the living and the dead."
+
+newmonster "Underworld Cultist"
+spr1 "Underworldcultist1.tga"
+spr2 "Underworldcultist2.tga"
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            3 # Strength.
+mor                            5 # Morale.
+mr                             5 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               59   1 # Death at level 1.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+mastery                        1 # A mastery effect will change this monster to the type defined 1 after this one
+libmastery                     2 # Can level up in a level 2 library.
+descr "Worship of the Underworld has long existed, though mostly in secrecy or as an eccentric pastime for certain nobles. Now, with direct sponsorship from the Emperor, the shadow priests are rising to challenge the solar and serpent cults for dominance."
+
+newmonster "Underworld Priest"
+spr1 "Underworldpriest1.tga"
+spr2 "Underworldpriest2.tga"
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            3 # Strength.
+mor                            6 # Morale.
+mr                             7 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               59   2 # Death at level 2.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+randomitem                    25 # 25% chance to spawn with a random magic item of any type.
+mastery                        1 # A mastery effect will change this monster to the type defined 1 after this one; i.e. monster #54: Master of Darkness.
+libmastery                     3 # Can level up for 600 Gold in a level 3 library.
+descr "Worship of the Underworld has long existed, though mostly in secrecy or as an eccentric pastime for certain nobles. Now, with direct sponsorship from the Emperor, the shadow priests are rising to challenge the solar and serpent cults for dominance."
+
+newmonster    "Pontifex Inferi"                                       #   54
+descr "Worship of the Underworld has long existed, though mostly in secrecy or as an eccentric pastime for certain nobles. Now, with direct sponsorship from the Emperor, the shadow priests are rising to challenge the solar and serpent cults for dominance."
+spr1 "Pontifextenebri1.tga"
+spr2 "Pontifextenebri2.tga"
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            3 # Strength.
+mor                            6 # Morale.
+mr                             9 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               59   2 # Death at level 2.
+spellweapon                9   2 # Dark Magic at level 2.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+randomrare                    20 # 20% chance to spawn with a random rare magic item.
+randomitem                   100 # 100% chance to spawn with a random magic item of any type.
+sensedead 1
+
+newmonster "Ashen Behemoth"
+spr1 "Ashenbehemoth1.tga"
+spr2 "Ashenbehemoth2.tga"
+descr "The Ashen Behemoth is an undead elephant controlled by an Underworld Priest who rides atop it. The Underworld Cultists seems to take great delight in parading these monstrosities around the streets, in a display of the special favor bestowed on them by the God Emperor."
+armor                          1 # Armor.
+hp                            85 # Hit Points.
+str                            9 # Strength.
+mor                            99 # Morale.
+mr                             10 # Magic Resistance.
+rank                           0 # Front rank.
+meleeweapon                9  37 # Gore: d9 Slash damage.
+spellweaponbonus               59   2 # Death at level 2.
+undead
+inanimate
+charmres
+sleepres
+poisonres 100
+coldres 100
+diseaseres
+pierceres
+fear 1
+battlefast
+trample 4
+frontpos
+noheal
+
+#------------------------------- Senator rituals--------------------------------------------#
+
+selectritual "Coronation" #This only effects the senator one? Stops more senators being promoted.
+updatehome #Ensures the God Emperor respawns in the capital.
+nomonworldreq
+addstring	  "(-)God Emperor"
+addstring	  "(-)God Emperor of the Underworld"
+
+newritual "Designate Capital" #Turns a city into a Capital
+free
+apcost 8
+ritpow 31 #Senator rituals
+level 2 #pre coronation
+cost 0  600
+cost 1  200
+terr 9 # City
+alterloc 207 #Capital
+aiwhere				 9 #city
+aialways 999
+nonearby99req 83 #no Capitolium on the same plane, should prevent multiple being created.
+nonearby99req 135 #no Capitolium on the same plane, should prevent multiple being created.
+nonearby99req 207 #no Capitolium on the same plane, should prevent multiple being created.
+nonearby99req 243 #no Capitolium on the same plane, should prevent multiple being created.
+soundfx 57
+descr "As long as no Capital exists in the realms of Elysium the Senator can designate any City as the new Capital."
+
+newritpow #Dark Emperor Necromancy
+
+selectritual "Planar Swap" 1
+nostart
+level 9
+
+newritual "Undying Loyalty"
+ritpow                45 # Dark Emperor
+level 2
+free
+apcost -1
+cost 14 10
+cost 1 20
+summoning
+addstring "5*Longdead Triarius & 5*Longdead Principe 
+addstring "10*Longdead Hastatus"
+addstring "4*Longdead Triarius & 6*Longdead Hastatus"
+addstring "3*Longdead Principe & 7*Longdead Hastatus"
+descr "When our current Emperor was coronated he decreed that all citizens would serve him in both life and death. The bones of the dead gladly rise to fight His enemies once more. ^This ritual raises a number of principe, hastati or triarii who are equipped with their respective armaments."
+
+newritual "Gates of Perdition"
+ritpow                45 # Dark Emperor
+level 3
+free
+cost 14 500
+terr -28 #Towns or cities
+planereq 0
+alterloc 87 #Haunted City 
+makeportal 1000 #gateway to hades
+planeloc 5 #Hades, same place
+soundfx 57
+makeportal 1000
+centerloc
+descr "The Emperor's ambitions extend beyond the limits of Elysium, and he wishes to rule both the realms of the living and the dead. This ritual opens a permanent gateway into Hades. The ritual demands the sacrifice of an entire city's populace to tear the boundary between the living and the dead. The gate’s unholy power consumes the city, transforming it into a haunted ruin."
+	
+newritual     "Imperial Wedding"                                          # 305
+descr "The Emperor is married with the Empress to be.  The Emperor's bride is a Renata carefully selected by her order to become the future Empress.  Both the Emperor and a Renata must be present in the capital to perform the wedding ceremony."
+ritpow                45 # Dark Emperor
+level                  2
+cost              0  400 # 400 Gold
+terr                 -22 # Required terrain: a capital.
+promotion             -1 # Promote 1 unit to a commander and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
+nomonworldreq          1 # Monsters in strings beginning with "(-)" in the world must be fewer than 1.
+free                     # Always start with this ritual in addition to the others.
+addstring     "Renata"
+addstring     "Dark Empress"     # Unique.
+addstring     "(-)Dark Empress"     # This string will only be used by nomon[...] commands.
+addstring     "(-)God Empress of the Underworld"     # This string will only be used by nomon[...] commands.
+
+newritpow #Dark Empress"
+newritual     "Apotheosis"                                                
+level                  2
+cost              0 1000 # 1000 Gold
+terr                  -2 # Required terrain: temples.
+forgetrits               # Forget all rituals.
+promotion             -1 # Promote 1 unit to a commander and make it the target unit. Valid promotions are in paired strings not beginning with "(+)", "(-)", "(&)", or "|".
+free                     # Always start with this ritual in addition to the others.
+addstring     "Dark Empress"
+addstring     "God Empress of the Underworld"     # Unique.
+descr "Ruling over Elysium is a high achievement, but even the greatest ruler pales in comparison to the glory of the Gods. This ritual resolves that disparity by elevating the Emperor or Empress of Elysium to the status of a true deity."
+
+selectmonster "Dark Empress"
+power 0 2
+
+newritpow #Flamen
+newritual     "Build Lararium"                                            
+descr "The Flamen builds a small shrine dedicated to the Lar of the land. Lares are benevolent rural spirits who bless and protect farmlands and households. A farm blessed by the presence of a Lar will receive increased income, as well as the aid of the Lar, should brigands or hostile beasts attack."
+level                  1
+cost              0   25 # 25 Gold
+terr                 -13 # Required terrain: any farm.
+nomonreq                 # Monsters in strings beginning with "(-)" must not be here.
+summoning                # The ritual will summon the monsters specified in a random string.
+apcost                 2 # Actual AP cost: 3.
+free                     # Always start with this ritual in addition to the others.
+addstring     "Lar"
+addstring     "(-)Lar"     # This string will only be used by nomon[...] commands.
+
+selectmonster "Flamen"
+power 0 1
+#-------------------------------- Senator class and recruitment data ------------------------------------#
+
+selectclass 8 #Senator 
+recherochance 3
+recasschance 2
+recwizchance 2 #lower than before, gets a lot of cult offers instead. 
+reqterr 9 #Map should generate a city
+classcitterr -1083 # haunted cities and haunted capitoleum are citadels, relevant for god emperor of the underworld only
+
+clearrec
+#                                               % No gold die iron
+addunitrec  "Veles"                           100  5   40   0    0
+addunitrec "Funditore"	              	      100  5   40   0    0
+addunitrec  "Hastatus"                        100  5   45   0    5
+addunitrec  "Princeps"                        100  5   50   0   10
+addunitrec  "Princeps Solaris"                100  5   55   0   10
+	reclimiter  "+Leo"                   
+addunitrec  "Triarius"                        100  5   55   0   20
+addunitrec  "Praetorian Guard"                100  5   60   0   20
+	reclimiter  "+Emperor"                
+	reclimiter  "+God Emperor"                 
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
+addunitrec  "Ballista"                        	100  2   25   0   50
+addunitrec  "Hastatus"                          5 10   65   0    5 
+addunitrec  "Imperial War Elephant" 		15  1   50   0   25
+	recterr -27
+addunitrec "Behemoth Solaris"			2 1 100 20 15
+	recterr -27
+	reclimiter "+Leo"
+	reclimiter "+Heliodromus"
+addmercrec  "Standard"                        100  1   20   0    0 # once per offer; extra.
+addmercrec  "Archer"                           20  5   50   0    0 # once per offer; extra.
+addmercrec  "Gladiator"                        20  2   25   0    0 # once per offer; extra.
+addmercrec  "Retiarius"                        -1  2   25   0    0 # ignores chance and is offered when previous offer is.
+addcomrec   "Senator"                          10      50  10    0 # once per offer; extra.
+	reclimiter  "-Senator"                        # owning a senator prevents the preceding offer.
+	reclimiter  "-Emperor"                        # -- prevents the preceding offer.
+	reclimiter  "-God Emperor"                    # -- prevents the preceding offer.
+	reclimiter  "-Dark Emperor"                   # -- prevents the preceding offer.
+	reclimiter  "-God Emperor of the Underworld"  # -- prevents the preceding offer.
+addcomrec "Legatus Legionis"			2 60 10 0
+addcomrec "Flamen"				5	40 20 0				
+addcomrec  "Centurion"                        25      35  10    0 # once per offer; extra.
+addcomrec  "Leo"                               5      50  20    0 # once per offer; extra.
+addcomrec  "Heliodromus"                       2      90  20    0 # once per offer; extra.
+	templerec                                    # +2% to chance per temple owned, to a max of +10%
+addcomrec   "Renata"                            6      50  20    0 # once per offer; extra.
+addcomrec   "Renatus"                           2     110  20    0 # once per offer; extra.
+	libraryrec                                    # +1% to chance per library point owned, to a max of +10%
+addcomrec   "Serpent Acolyte"                   6      50  20    0 # once per offer; extra.
+	templerec                                     # +3% to chance per temple owned
+addcomrec   "Serpent Priest"                    3      90  20    0 # once per offer; extra.
+	templerec                                     # +2% to chance per temple owned, to a max of +10%
+addcomrec  "Anguifer"				3    50  20    0
+	reclimiter "+Serpent Acolyte"
+	reclimiter "+Serpent Priest"
+	templerec                                     # +2% to chance per temple owned, to a max of +10%
+addcomrec   "Augur"                             4      60  20    0 # once per offer; extra.
+addcomrec "Thaumaturg"				3      90  20    0 # once per offer; extra.
+	libraryrec				# +1% to chance per library point owned, to a max of +10%
+addmercrec  "Scout"                            10  1   15  10    0 # once per offer; extra.
+
+	# -------- Light Emperor extra chance of solar cult and Renatus offers 
+addcomrec   "Leo"                               5      50  20    0 # once per offer; extra.
+	reclimiter  "+Emperor"                # Owning a Emperor enables the preceding offer.
+	reclimiter  "+God Emperor"                    # Owning a God Emperor enables the preceding offer.
+addcomrec   "Heliodromus"                       2      90  20    0 # once per offer; extra.
+	reclimiter  "+Emperor"                # Owning a Emperor enables the preceding offer.
+	reclimiter  "+God Emperor"                    # Owning a God Emperor enables the preceding offer.
+addcomrec   "Renata"                            5      50  20    0 # once per offer; extra.
+	reclimiter  "+Emperor"                # Owning a Emperor enables the preceding offer.
+	reclimiter  "+God Emperor"                    # Owning a God Emperor enables the preceding offer.
+addcomrec   "Renatus"                           2     110  20    0 # once per offer; extra.
+	reclimiter  "+Emperor"                # Owning a Emperor enables the preceding offer.
+	reclimiter  "+God Emperor"                    # Owning a God Emperor enables the preceding offer.
+
+	# ------------ Dark Emperor gets underworld cultists, and eventually undead ------------- 
+addunitrec "Longdead Velite" 100 5 0 0 0
+	recxcost 13 25
+	recterr -1081
+addunitrec "Longdead Hastatus" 100 5 0 0 5
+	recxcost 13 25
+	recterr -1081
+addunitrec "Longdead Principe" 100 5 0 0 10
+	recxcost 13 25
+	recterr -1081
+addunitrec "Longdead Triarius" 100 5 0 0 20
+	recxcost 13 25
+	recterr -1081
+addunitrec "Ashen Behemoth"			4 1 90 20 15
+	recxcost 13 50
+	recterr -27
+	recterr -1081
+	reclimiter "God Emperor of the Underworld"
+addcomrec "Underworld Cultist" 6      90  20    0 # once per offer; extra.
+	templerec
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
+addcomrec "Underworld Priest" 3      90  20    0 # once per offer; extra.
+	templerec
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
+addcomrec "Shadow Tribune" 3      0  0    0 # once per offer; extra.
+	reclimiter "+Dark Emperor"
+	reclimiter "+God Emperor of the Underworld"
+	recterr 135
+	recxcost 13 25
+addcomrec "Shadow Centurion" 10      0  0    0 
+	recxcost 13 25
+	recterr -1081  
+
+
+

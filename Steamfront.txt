@@ -1,0 +1,79 @@
+This started as me tinkering with game files to look busy during a conference. Then it spiraled. Two years and 26,000 lines of code later, it’s a full overhaul.
+
+It is probably the nerdiest thing I’ve ever done—an [i]Opus Magnum[/i] of productive procrastination. I’m pretty proud of it.
+
+Elysium Remastered revisits every class, plane, and system in the game. The goal was to keep the spirit of the original intact while making things feel more consistent, better balanced, and more replayable in the long term. Most changes follow the logic of flavor first, mechanics second. This isn’t a content dump—where new content was added, it’s because something felt missing. I tried to keep clutter to a minimum.
+
+---
+
+[b]What’s New[/b]
+
+[u]General Improvements[/u]  
+• Lots of tweaks to balance, functionality and quality of life. Ships are faster, lightning attacks scale less well, ant hills burn (you are welcome) etc.  
+• Many sprite upgrades pulled from Dominions and other community mods  
+
+[u]Class Overhauls[/u]
+Every class has been touched in some way. The idea was to give each of them:
+• A clearer sense of identity
+• Unique mechanics and new content
+• A longer runway for late-game development and exploration
+• Fewer filler rituals and useless units
+• A more even footing overall—though it’s still wildly asymmetrical
+
+[i]Highlights:[/i]
+• [i]Markgraf[/i] — undead labor reforms, vampires, and vivisection
+• [i]Witch[/i] — darker nature magic, Baba Yaga vibes, and a branching endgame
+• [i]Scourge Lord[/i] — reworked into something like a Dark Sun/Arabian Nights villain (no more graffiti or breeding pits)
+• [i]Enchanter[/i] & [i]High Priestess[/i] — more sustainable playstyles, less terrain destruction
+• [i]Necromancer[/i] — must find and exhume the remains of giant monsters in order to reanimate them
+
+[u]Expanded Planes and Exploration[/u]  
+• New monsters, terrain, and treasures across all planes  
+• Agartha feels like a real underdark: interconnected tunnels, slime pools, ancient ruins, buried gods  
+• Sky Plane is more alive, with higher resource density and reasons to conquer it  
+• Celestial Realm, Inferno, Aztlan, and the Primal Plane have unique recruitment and better defended citadels (good luck killing God)
+
+[u]AI Rework[/u]  
+• Smarter ritual use, better army composition, less suicide  
+• Builds thematic garrisons and levels mages properly  
+• Class-specific logic: the Markgraf becomes a vampire, the Baron gets crowned, the Dwarf Queen actually works  
+
+---
+
+[b]Overview of contents [/b] (not exhaustive though):  https://docs.google.com/document/d/1S42LwkNoo29--LIVgq8KPTP4qwGIqNFd1Zxg3ZDw-VI/edit?tab=t.0
+
+--- 
+
+[b]Compatibility:[/b] Should work with most other mods. Modprio is set to 1—this will get overridden by others if there's overlap. Combining with other single class- or full overhauls is probably not a good idea. 
+[b]Performance:[/b] Slightly longer loading time at start-up, but no laggy background events—runs smoothly once you’re in.
+
+---
+
+I made this mostly for myself. If you enjoy it too, all the better. Feedback, bug reports, and balance opinions are welcome.
+
+[b]Credits[/b]
+This mod was inspired by major overhauls like:
+• [i]CoExpanded[/i]
+https://steamcommunity.com/sharedfiles/filedetails/?id=2580936249
+• [i]Large Overhaul[/i]
+https://steamcommunity.com/sharedfiles/filedetails/?id=2957711744
+• [i]AXPmod for CoE4/5[/i]
+https://steamcommunity.com/sharedfiles/filedetails/?id=3459944026
+
+It also draws on work by many other authors across the Conquest of Elysium and Dominions modding community.
+
+[b]Thanks especially to:[/b]
+[b]Executor, Sturm, Nyaxe, Alextheebeetrayer, Nethermind, Juz[/b] — for inspiration, concepts, and sprites.
+If you find something you really like, there’s a good chance it came from one of them. Many sprites especially from Sturm. The mod files include references if you want to track where something originated.
+
+[b]Sprite sources include:[/b]
+• [i]Sturm’s Sprite Overhaul[/i] & [i]The Gathering Sturm[/i]
+https://steamcommunity.com/sharedfiles/filedetails/?id=3459944026
+• [i]Executor’s Confluence[/i] & [i]Legendary Mods[/i]
+https://steamcommunity.com/sharedfiles/filedetails/?id=3411126459
+• [i]Ny’s New Nations[/i]
+https://steamcommunity.com/sharedfiles/filedetails/?id=3240957628
+• [i]Juz’s Enhanced Classes[/i]
+https://steamcommunity.com/profiles/76561198014387315/myworkshopfiles/?appid=1606340
+
+Also thanks to [b]Merlin[/b] and [b]ColonelDraculaJoinsTheNavy[/b] for making the game files accessible.

@@ -1,0 +1,915 @@
+
+	
+# Baron ###############################################################
+
+todo: 
+aihints 
+descriptions (fra XP mod måske også)
+
+strange sorceress -> green enchantress 
+	+ extra green enchantress recruitment
+
+ranger captain m acute senses
+
+increased chance of monks, court mage, alchemist if king
+
+unicorn knights fra queen
+Adventurer double lvl 1 spells (mindre self destruct)
+adventurer wizardry
+flere melee (warrior mage?)
+
+Elite
+	knight-warden
+	high guard 
+	knight-magus 
+
+Strange Sorceress - unique?
+	royal marriage
+	extra green enchantress 
+	
+
+
+#----------------------- Baron Weapons --------------------------------------------------#
+
+newweapon     "Ranger's Crossbow"
+trgrank              9 # Target: Any enemy
+range                6
+init                 2
+dmgtype              3 # Pierce.
+dmg                  5 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+reload1                # Takes 1 round to reload.
+mundane                # Non-magic. Ethereal units have a 75% chance to be unaffected.
+arrow                  # Can be negated by air shield.
+rangepen               # Does half damage if distance >= half range.
+flymode              1 # Missile sprite, one for each strike or square hit.
+flylook             14
+flysound            13 # crossb.smp (Crossbow)
+
+#----------------------- Baron Monsters ------------------------------------------------#
+
+newmonster "Grand Alchemist"
+descr "The Grand Alchemist claims to have discovered the secret of Eternal Life. His changed perspective has not inspired him to make more gold."
+spr1 "Grandalchemist1.tga"
+spr2 "Grandalchemist2.tga"
+armor                          0 # Armor.
+hp                             6 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                             8 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               55   3 # Alchemy at level 3.
+meleeweapon                0   1 # Dagger: d3 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+power                      56  2 # Alchemist, level 2.
+randomitem                    25 # 25% chance to spawn with a random magic item of any type.
+acidres                       75 # 75 Acid Resistance.
+fireres                       75 # 75 fire resistance 
+fastheal
+diseaseres
+unaging
+
+newmonster "Adventuring Party"
+descr "A band of heroes, fighting for the greater good, magic treasures or just for the fun of it."
+spr1 "0117.png"
+spr2 "0117.png"
+armor                          0 # Armor.
+hp                            30 # Hit Points.
+str                            4 # Strength.
+mor                            8 # Morale.
+mr                             8 # Magic Resistance.
+rank                           -1 # Mid rank.
+rangedweapon               3 28 # Longbow: d7 Pierce damage.
+meleeweapon                1   8 # Shortsword: d6 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+noslots                     # Has the full set of item slots.
+nozoc
+nocombat
+unimportant
+stationary
+nametype 44
+
+newritpow #
+newritual "Start Expedition"
+level 1
+free 
+summoning
+addstring "c*Adventuring Party Leader & 2d6+1*Adventurer"
+castertarg
+killtarg 999
+
+selectmonster "Adventuring Party"
+power 0 1
+
+
+newmonster "Adventuring Party Leader"
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+spr1 "Adventurer_archer1.tga"
+spr2 "Adventurer_archer2.tga"
+armor                          1 # Armor.
+hp                            12 # Hit Points.
+str                            4 # Strength.
+mor                            8 # Morale.
+mr                             7 # Magic Resistance.
+rank                           -1 # Back Rank
+rangedweapon               4 28 # Longbow: d8 Pierce damage.
+meleeweapon                1   8 # Shortsword: d6 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+female                           # Female.
+stupid
+randomitem                    25 # 15% chance to spawn with a random magic item of any type.
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+wandermaxdist 25
+greedy
+aggressive
+fastheal
+
+newmonster "Adventuring Party Leader" #Wizard
+spr1 "Adventurer_wizard1.tga"
+spr2 "Adventurer_wizard2.tga"
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+armor                          0 # Armor.
+hp                             7 # Hit Points.
+str                            3 # Strength.
+mor                            7 # Morale.
+mr                             8 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               51   2 # Wizardry at level 2.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+randomitem                    25 # 15% chance to spawn with a random magic item of any type.
+stupid
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+wandermaxdist 25
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventuring Party Leader"
+spr1 "Adventurer_rogue1.tga"
+spr2 "Adventurer_rogue2.tga"
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+armor                          1 # Armor.
+hp                             8 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                             8 # Magic Resistance.
+rank                          -1 # Back rank.
+meleeweapon                0   8 # Shortsword: d5 Slash damage.
+meleeweapon                0 146 # Poison Dagger: d3 Pierce damage.
+rangedweapon               0 375 # Poison Blowgun: d1 Pierce damage.
+assassinweapon             2 182 # Poison Dagger: d5 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+evasion
+allitemslots                     # Has the full set of item slots.
+randomitem                    25 # 15% chance to spawn with a random magic item of any type.
+stupid
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+wandermaxdist 25
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventuring Party Leader" #necromancer
+spr1 "Adventurer_necromancer1.tga"
+spr2 "Adventurer_necromancer2.tga"
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+armor                          0 # Armor.
+hp                             7 # Hit Points.
+str                            3 # Strength.
+mor                            6 # Morale.
+mr                             7 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               38   1 # Necromancy at level 1.
+spellweapon               38   1 # Necromancy at level 1.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+randomitem                    25 # 15% chance to spawn with a random magic item of any type.
+stupid
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+wandermaxdist 25
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventuring Party Leader"
+spr1 "Adventurer_fighter1.tga"
+spr2 "Adventurer_fighter2.tga"
+armor                          2 # Armor.
+hp                            12 # Hit Points.
+str                            6 # Strength.
+mor                            7 # Morale.
+mr                             7 # Magic Resistance.
+rank                           0 # Front rank.
+meleeweapon                1   2 # Broadsword: d7 Slash damage.
+meleeweapon                1   2 # Broadsword: d7 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+allitemslots                     # Has the full set of item slots.
+randomweapon                   25 # 15% chance to spawn with a random magic weapon of any type.
+stupid
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+wandermaxdist 25
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventuring Party Leader" #Barbarian
+spr1 "Adventurer_barbarian1.tga"
+spr2 "Adventurer_barbarian2.tga"
+armor                          1 # Armor.
+hp                            18 # Hit Points.
+str                            6 # Strength.
+mor                            8 # Morale.
+mr                             7 # Magic Resistance.
+rank                           0 # Mid rank.
+meleeweapon                5  21 # Greatsword: d14 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+noleader                         # Even if this monster is a commander, it cannot lead other units.
+randomweapon                    25 # 15% chance to spawn with a random weapon of any type.
+stupid
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+wandermaxdist 25
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventuring Party Leader" #Crossbow
+spr1 "Adventurer_crossbow1.tga"
+spr2 "Adventurer_crossbow2.tga"
+armor                          2 # Armor.
+hp                            12 # Hit Points.
+str                            4 # Strength.
+mor                            7 # Morale.
+mr                             7 # Magic Resistance.
+rank                           -1 # back rank.
+rangedweapon               2 442 # Arbalest: d12 Pierce damage.
+meleeweapon                1   8 # short sword: d6 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+stupid
+randomitem                    25 # 15% chance to spawn with a random magic item of any type.
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+wandermaxdist 25
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventuring Party Leader" #Cleric
+spr1 "Adventurer_cleric1.tga"
+spr2 "Adventurer_cleric2.tga"
+armor                          0 # Armor.
+hp                             8 # Hit Points.
+str                            4 # Strength.
+mor                            7 # Morale.
+mr                             8 # Magic Resistance.
+rank                          -1 # back.
+spellweapon               25   2 # Prayers at level 2.
+meleeweapon                0 20 # Mace: d5 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+holy                             # Always receives Bless effects.
+allitemslots                     # Has the full set of item slots.
+nametype                      14 # French & Spanish.
+stupid
+randomitem                    25 # 15% chance to spawn with a random magic item of any type.
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+wandermaxdist 25
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventurer"
+spr1 "Adventurer_rogue1.tga"
+spr2 "Adventurer_rogue2.tga"
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+armor                          1 # Armor.
+hp                             7 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                             5 # Magic Resistance.
+rank                          -1 # Back rank.
+meleeweapon                0   8 # Shortsword: d5 Slash damage.
+meleeweapon                0 146 # Poison Dagger: d3 Pierce damage.
+assassinweapon             2 182 # Poison Dagger: d5 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+allitemslots                     # Has the full set of item slots.
+randomitem                    15 # 15% chance to spawn with a random magic item of any type.
+followstupid
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventurer" #Wizard
+spr1 "Adventurer_wizard1.tga"
+spr2 "Adventurer_wizard2.tga"
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            3 # Strength.
+mor                            6 # Morale.
+mr                             7 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               51   2 # Wizardry at level 2.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+randomitem                    15 # 15% chance to spawn with a random magic item of any type.
+followstupid
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventurer" #necromancer
+spr1 "Adventurer_necromancer1.tga"
+spr2 "Adventurer_necromancer2.tga"
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            3 # Strength.
+mor                            6 # Morale.
+mr                             7 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               38   1 # Necromancy at level 1.
+spellweapon               38   1 # Necromancy at level 1.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+randomitem                    15 # 15% chance to spawn with a random magic item of any type.
+followstupid
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventurer"
+spr1 "Adventurer_fighter1.tga"
+spr2 "Adventurer_fighter2.tga"
+armor                          2 # Armor.
+hp                            12 # Hit Points.
+str                            6 # Strength.
+mor                            7 # Morale.
+mr                             5 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                1   2 # Broadsword: d7 Slash damage.
+meleeweapon                1   2 # Broadsword: d7 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+shield                           # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
+allitemslots                     # Has the full set of item slots.
+randomweapon                   15 # 15% chance to spawn with a random magic weapon of any type.
+followstupid
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventurer" #Barbarian
+spr1 "Adventurer_barbarian1.tga"
+spr2 "Adventurer_barbarian2.tga"
+armor                          1 # Armor.
+hp                            15 # Hit Points.
+str                            6 # Strength.
+mor                            8 # Morale.
+mr                             5 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                4  21 # Greatsword: d13 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+noleader                         # Even if this monster is a commander, it cannot lead other units.
+randomweapon                    15 # 15% chance to spawn with a random weapon of any type.
+followstupid
+wander 9 #1 random 2crusade 3inquisition 9dragon 14 vassal 19 player squares
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventurer" #Archer
+spr1 "Adventurer_archer1.tga"
+spr2 "Adventurer_archer2.tga"
+armor                          1 # Armor.
+hp                            10 # Hit Points.
+str                            4 # Strength.
+mor                            7 # Morale.
+mr                             5 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               3 28 # Longbow: d7 Pierce damage.
+meleeweapon                1   8 # Shortsword: d6 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+female                           # Female.
+followstupid
+randomitem                    15 # 15% chance to spawn with a random magic item of any type.
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventurer" #Crossbow
+spr1 "Adventurer_crossbow1.tga"
+spr2 "Adventurer_crossbow2.tga"
+armor                          2 # Armor.
+hp                            10 # Hit Points.
+str                            4 # Strength.
+mor                            7 # Morale.
+mr                             5 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               2 442 # Arbalest: d12 Pierce damage.
+meleeweapon                1   8 # short swod: d6 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+followstupid
+randomitem                    15 # 15% chance to spawn with a random magic item of any type.
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster "Adventurer" #Cleric
+spr1 "Adventurer_cleric1.tga"
+spr2 "Adventurer_cleric2.tga"
+armor                          0 # Armor.
+hp                             6 # Hit Points.
+str                            4 # Strength.
+mor                            5 # Morale.
+mr                             7 # Magic Resistance.
+rank                          0 # mid.
+spellweapon               25   2 # Prayers at level 2.
+meleeweapon                0 20 # Mace: d5 Blunt damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+holy                             # Always receives Bless effects.
+allitemslots                     # Has the full set of item slots.
+nametype                      14 # French & Spanish.
+followstupid
+randomitem                    15 # 15% chance to spawn with a random magic item of any type.
+greedy
+aggressive
+descr "An experienced hero fighting for the greater good, magic treasures or just for the fun of it."
+fastheal
+
+newmonster    "Ranger Captain"
+spr1 "Rangercaptain1.tga"
+spr2 "Rangercaptain2.tga"
+descr "The ranger captain is a seasoned hunter who has risen to the rank of commander, leading with the same cunning he once used to stalk prey. His marksmanship is legendary, with some claiming it borders on the supernatural."
+armor                          1 # Armor.
+hp                            10 # Hit Points.
+str                            4 # Strength.
+mor                            5 # Morale.
+mr                             4 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               1  "Ranger's Crossbow" # 
+meleeweapon                0   2 # Broadsword: d6 Slash damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+foreststealth
+allitemslots                     # Has the full set of item slots.
+size1x1
+nametype                       2
+snow
+swamp
+acutesenses
+hideanimals 1
+
+newmonster    "Ranger"
+spr1 "Ranger1.tga"
+spr2 "Ranger2.tga"
+descr "Rangers are highly trained hunters and trackers that patrol the Baron's woodlands for threats."
+armor                          0 # Armor.
+hp                             6 # Hit Points.
+str                            4 # Strength.
+mor                            4 # Morale.
+mr                             4 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               0   9 # Crossbow: d6 Pierce damage.
+meleeweapon               -3  3 # Axe: d4 Slash damage.
+meleeweapon                0   1 # Dagger: d3 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+foreststealth
+allitemslots                     # Has the full set of item slots.
+nametype                       2
+size1x1
+snow
+swamp
+
+newmonster    "Royal Bard"  
+spr1 "Bard1.tga"
+spr2 "Bard2.tga"       
+descr "A truly skillful Bard can weave tales of their patron’s valor, honor, and greatness, spreading their fame across the realm and ensuring their name is sung for generations. Even a less gifted Bard has their uses, providing lively entertainment at banquets, festive gatherings, and any occasion where a noble’s guests require distraction—or, failing that, a good laugh at the Bard’s expense."
+spr1 "Bard1.tga"
+spr2 "Bard2.tga"
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            4 # Strength.
+mor                            4 # Morale.
+mr                             5 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon               18   1 # Fortune Magic at level 1.
+meleeweapon                0   1 # Dagger: d3 Pierce damage.
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+localleadership                1 # +1 Morale for allied units within two squares of this unit.
+	
+newmonster "Strange Sorceress"
+spr1 "Strangesorceress1.tga"
+spr2 "Strangesorceress2.tga"
+rank -1       
+hp 8
+armor 0
+mr 7
+mor 8
+str 4
+spellweapon 65 2 #Sidhe
+meleeweapon 0 1
+human
+female
+allitemslots
+affres 100
+nametype 43 #Gaelic
+power 6 1 #baron level powers
+goldbonus                     10 # 10% bonus to all gold income for the player that owns this unit while it exists.
+ironbonus                     10 # 10% bonus to all iron income for the player that owns this unit while it exists.
+aihold 1
+descr "A strange Sorceress has appeared at court. It is said she comes from a mystical faraway land, but nobody seems to know for sure. The king seems quite taken by her. Some whisper she has enchanted him, but perhaps he is just looking for a challenge."
+
+newmonster "Queen"
+spr1 "Queen1.tga"
+spr2 "Queen2.tga"
+rank -1       
+hp 8
+armor 0
+mr 7
+mor 8
+str 4
+spellweapon 65 2 #Sidhe
+meleeweapon 0 1
+human
+female
+allitemslots
+affres 100
+nametype 43 #Gaelic
+power 6 1 #baron level powers
+goldbonus                     10 # 10% bonus to all gold income for the player that owns this unit while it exists.
+ironbonus                     10 # 10% bonus to all iron income for the player that owns this unit while it exists.
+aihold 1
+descr "While it is easy to assume the King is the sole ruler of the kingdom, any married man knows that being the master of one’s own household is more fiction than fact. The royal marriage is no exception. Though the King holds the formal title, the Queen may well be the true power behind the throne. Our Queen, hailing from a distant and mystical land, commands immense respect among the commoners—and more than a little awe. Rumors abound that she is a magician, and there may be truth to them. Since her arrival, the forests have grown wilder, and sightings of unicorns have become strangely frequent. Coincidence? The court wisely avoids asking."
+
+newmonster "King’s Guard" # Great Axe i stedet for halberd måske
+descr "The King’s Guard is an elite force made up of the strongest and most battle-hardened soldiers in the realm. Its members are often handpicked from families that proudly trace their lineage back to the first men, giving them an air of ancient prestige, and a reputation for being particularly resistant to dark magic. While their official duty is to safeguard the Royal Castle, in practice, they are frequently dispatched to deal with perceived threats to the King. Whether or not those threats are real, the King’s Guard remains ever ready to prove that the best defense is preemptive." 
+spr1 "Royalguard1.tga"
+spr2 "Royalguard2.tga"
+armor                          3 # Armor.
+hp                             9 # Hit Points.
+str                            4 # Strength.
+mor                            6 # Morale.
+mr                             6 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                1  23 # Halberd: d9 Slash damage.
+battleslow
+human                            # Vulnerable to weapons and spells that only affect humans; leaves a humanoid corpse on death.
+allitemslots                     # Has the full set of item slots.
+affres 50
+
+newmonster "Castle Construction Site"
+descr "A Castle under construction."
+spr1 "Castleconstructionsite.tga"
+spr2 "Castleconstructionsite.tga"
+hp 1000
+nocombat
+stupid
+stationary
+immobile
+unimportant
+nozoc
+growtime 36
+
+newmonster "Castle Construction Site " 1
+descr "A Castle under construction."
+spr1 "Castleconstructionsite.tga"
+spr2 "Castleconstructionsite.tga"
+hp 100
+nocombat
+stupid
+stationary
+immobile
+unimportant
+nozoc
+terraformfrom -71
+terraformch 100
+terraformto 22
+dmgonterr 22
+dmgonterrbonus 999
+
+newmonster "Barricades"
+copystats "Earth Barricade"
+descr "descr "A quickly assembled barricade made of earth and wooden stakes. It will probably take quite some time to break through."
+hp 40
+rank 1
+frontpos
+deployoutside 1
+growtime 6
+
+newmonster "Barricades "
+copystats "Earth Barricade"
+hp 1
+noheal
+dmgonterr -1
+
+newritual "Entrench Position"
+descr "Construct temporary barricades to protect your soldiers in the field. The barricades will crumble within a few months." 
+ritpow 6
+level 1
+apcost 1
+summoning 
+addstring "6*Barricades"
+nofemale # queen can´t cast 
+airare -1 #Ai never cast
+nomonreq "(-)Barricades"
+
+#--------------------------- Baron Monster Adjustments ------------------------------#
+
+
+selectmonster "King" #immune to afflictions
+affres 75
+aihold 1
+
+selectmonster "Baron" #Has hero powers.
+affres 75
+
+selectmonster "War Dog" #Now a merc in recruitment so you can spam them. They're now a screen to tank missiles/spells before the knights hit.
+clearspec #resets rearpos
+rank 1
+fast
+animal
+frontpos
+	
+selectmonster "Tower Guard" #Better armored but slow, encourages using them as defense rather than general troops.
+armor 2 #from 1, big buff
+slow
+aihold 1 #Makes the AI use them for defence.
+aimaxshop 30
+	
+selectmonster "Unicorn Knight"
+hp 17
+mr 7
+twistfate
+	
+selectmonster "Vassal Unicorn Knight"
+hp 18
+twistfate
+mr 7
+rank 0
+wanderrest 70
+
+selectmonster "Heavy Infantry"
+clearmove
+	
+selectmonster "High Lord"
+rank 0 #midline, helps manage armies better by not losing their commander to random moose fire
+	
+selectmonster "Vassal Knight" #farther back and wanders more, maybe
+rank 0
+hp 14 #from 11
+wanderrest 70 #previously 80
+
+#------------------------ Baron Rituals -----------------------------------------------#
+
+selectritual "Found Monastery"
+nonearby3req 304
+descr "The Abbot founds a monastery in a farmland. Monasteries produce more gold and are surrounded by defendable walls. The Monastery has the temple trait and can increase chances of monk recruitment. The farmers can only pay so many tithes- must be built at least 3 tiles from the nearest monastery"
+
+selectritual "Swift Justice" 
+descr "Swift justice can be dealt to a brigand lair.  The place is surrounded and everyone is rounded up and hanged. This takes care of the brigand problem forever. Whatever loot they have is collected by the Baron."
+level 1
+cost 0 -25 #gives gold
+aialways 100
+
+selectritual "Appoint Vassal" #high lords can cast it, can be cast in more locations. But costs more
+level 1
+cost 0 60
+rebatelvl 2 #half price for barons and better
+terr -31 #walled locations
+descr "Appoints a knight in the army as a Vassal, to steward and defend a fortified location such as a Motte and Bailey or castle. The fort will no longer produce units for the Baron, but for the Vassal instead. The Vassal and his troops will move independently and will occasionally try to conquer surrounding settlements and mines."
+
+selectritual "Raise Castle" #reworked, can build almost anywhere but not near other citadels.
+ritpow                 6 # Baron
+level                  3
+cost              0  250 # 250 Gold
+terr                   -71 # Required terrain: Farm.
+soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
+apcost                 2 # Actual AP cost: 3.
+free                     # Always start with this ritual in addition to the others.	
+nonearby5req -108 #no castles in range 5
+summoning
+addstring "Castle Construction Site"
+descr "Initiate the construction of a new castle. This is a costly enterprise and will take a full year to finish, but the result is impressive. The Baron does not have to be around for the full building period. The castle is supplied from the surrounding lands, and cannot be built within 5 squares of another castle."
+
+newritual "A Castle for a King" #T
+descr "Gold can buy almost anything in Elysium, including skilled craftsmen. With enough heavily taxed coin, a baron can upgrade their castle to rival that of a king. However, any existing King or Emperor is unlikely to tolerate such an affront to their authority. Therefore only one King’s Castle can stand at a time."
+free
+ritpow 6 #Baron rituals
+level 2 #Baron tier
+cost 0 500
+apcost 9
+terr 30 #Baron castle
+alterloc 124 #King's castle
+nonearby99req 124 #no castles on the same plane, should prevent multiple being created.
+soundfx 57
+nomonworldreq
+addstring "(-)King"
+addstring "(-)Emperor"
+addstring "(-)Dark Emperor"
+addstring "(-)God Emperor"
+addstring "(-)God Emperor of the Underworld"
+aialways 999	
+
+newritual "Royal Wedding" 
+free
+ritpow 6 #baronial muster
+level 3 #King Level
+cost 0 200
+apcost 2
+terr 124 #King's castle
+promotion -1
+nomonworldreq
+addstring "Strange Sorceress"
+addstring "Queen"
+addstring " Strange Sorceress"
+addstring "Queen"
+addstring "(-)Queen" #For nonworldreq
+aialways 999	
+descr "Who but the King would have the audacity to court a secretive foreign Sorceress? A royal marriage is arranged, celebrated with a week-long feast overflowing with beer and merriment, all generously funded by the King’s treasury. However, when his Majesty finally stirs from the post-festivity haze, he’ll find that the balance of power in the realm has shifted somewhat."
+
+selectmonster "Queen"
+power 0 1
+
+newritual "Opus Magnum"
+ritpow                56 # Alchemist
+descr 
+level                  2
+cost              0  600 # 600 gold
+terr                  -57 # Level 3 libraries.
+transformtarg          1 # Target is transformed into the monster specified in a random string. If this would decrease the target's ritual caster level, it becomes the next monster instead.
+free
+addstring     "Grand Alchemist"
+descr "The Opus Magnum is the alchemist’s crowning achievement. After countless sleepless nights spent poring over ancient tomes and concocting bizarre concotions in the laboratory, he now claims to have unlocked the secret of immortality. Whether there’s any truth to this is unclear —he looks about the same, albeit slightly scruffier after his research frenzy. What is certain, however, is that he’s come up with some remarkably potent new formulas, which can be put to good use in the Baron’s service."
+
+# --------------------------- Baron Recruitment and Baron Class data -------------------------------------#
+selectclass 1  # Baron
+	clearrec
+	mercboost 25 #more merc offers
+	recherochance 4
+	recasschance 3
+	recwizchance 5
+	addunitrec  "Spearman"                     100  5   50  0   0
+	addunitrec  "Swordsman"                    100  5   50  0   10
+	addunitrec  "Crossbowman"                  100  5   50  0   5
+	addunitrec  "Heavy Infantry"               100  5   50  0  25 
+	addunitrec  "Longbowman"                   100  4   50  0   0
+	addunitrec  "Pikeneer"                     100  5   50  0   5
+	addunitrec  "Halberdier"                   100  5   50  0   5
+	addunitrec  "Zweihander"                   100  5   50  0  10
+		recterr 124 #kings castle
+	addunitrec  "Tower Guard"                  100  5   50  0  25
+	addunitrec  "Cavalryman"                   100  3   50  0  20
+	addunitrec	 "Knight"		   100	2   60	0  20 #mostly to help make vassals
+	addunitrec  "Ranger"                       100 4 50 0 0 5
+		reclimiter  "+Ranger Captain"
+	addmercrec  "War Dog"                      100  5   25  0   0 #Now a merc
+	addunitrec  "Ballista"                     100  2   25  0  50
+	addunitrec  "Catapult"                     100  1   25  0  50
+	addunitrec  "Trebuchet"                    100  1   50  0  50
+	addunitrec  "King’s Guard"		   100  4   75  0  30
+		reclimiter "+King"
+	addmercrec "Knight"			   5	3   50	0  20 #New knight offers sometimes
+		reclimiter	"+King"
+	addmercrec	"Unicorn Knight"	   10	3   80	0  20 
+		reclimiter	"+Queen"
+		templerec
+	addmercrec  "Scout"                         20  1   15 10   0
+	addmercrec  "Archer"                         5 10   70  0   0
+	addmercrec  "Crossbowman"                    5 10   70  0  10
+	addmercrec  "Spearman"                       5 10   70  0   0
+	addmercrec  "Swordsman"                      5 10   70  0  10
+	addmercrec  "Trebuchet"                     5  2   85  0  50
+	addmercrec   "Royal Bard" 8 1 30 10 0
+		reclimiter  "+King"
+	addcomrec "Adventuring Party" 		     5 100 50	0
+		reclimiter "-Adventuring Party"
+		reclimiter "+King"
+	addcomrec   "Baron"                         35      50 20  10 #A bunch of new limiters to stop you getting him if you have royalty already
+		reclimiter  "-Baron"
+		reclimiter	"+King"
+	addcomrec   "High Lord"                     30      50 10  10
+	addcomrec   "Monk"                           6      50 10   0
+		templerec	
+	addcomrec   "Court Mage"                     3      60 10   0
+		libraryrec
+	addcomrec   "Court Mage"                     3      60 10   0
+		reclimiter "+King"
+	addcomrec   "Alchemist"                      3      60 10   0
+		libraryrec
+	addcomrec   "Alchemist"                      3      60 10   0
+		reclimiter "+King"
+	addcomrec   "Ranger Captain" 5 50 15 5
+	addcomrec "Strange Sorceress"                10     60 10 0
+		recterr 124
+		reclimiter "-Strange Sorceress"
+		reclimiter "-Queen"
+	templebonusdescr "Monks and Unicorn knights"
+
+# ---------- AI ---------------# 
+
+
+newmonster "AI"
+spr1 "Blank64.tga"
+spr2 "Blank64.tga"
+stupid
+stationary
+unimportant
+nocombat
+immortal
+growtime 60
+
+newmonster "Late AI"
+spr1 "Blank64.tga"
+spr2 "Blank64.tga"
+stupid
+stationary
+unimportant
+nocombat
+immortal
+
+playerevent
++turnnbr -1
++aiplayer -2
+-hasunit -2 "AI"
+-hasunithere -2 "AI"
+newunits -2 "AI"
+endevent 
+
+selectmonster "King"
+stationary
+
+selectmonster "Queen"
+stationary
+
+selectritual "Coronation"
+airestrig 600
+
+selectritual "Coronation" 1
+airestrig 600
+
+selectritual "A Castle for a King"
+airestrig 500
+
+newmonster " Strange Sorceress"
+copystats "Strange Sorceress"
+stationary
+aimaxshop 1
+
+newmonster " Master Alchemist"
+copystats "Master Alchemist"
+stationary
+aimaxshop 2
+
+selectmonster "Trebuchet"
+aihold 0
+
+selectmonster "Alchemical Catapult"
+aihold 0
+
+selectmonster "Alchemical Trebuchet"
+aihold 0
+
+selectclass 1
+addcomrec " Strange Sorceress" 100 1 0 0 
+	recterr 124
+	reclimiter "+AI"
+	reclimiter "+Late AI"
+	reclimiter "-Queen"
+
+addcomrec " Master Alchemist" 100 1 1 0 
+	recterr 124
+	reclimiter "+AI"
+	reclimiter "+Late AI"
+
+# --------- sene tilføjelser 
+
+
+--- Husk 
+
+
