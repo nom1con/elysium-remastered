@@ -1,3 +1,4 @@
+
 icon "Smallbanner.tga"
 description "An overhaul mod. Flavor, balance and content." 
 modprio 1 # Will be overwritten by other mods in case of conflict.
@@ -18727,7 +18728,7 @@ summoning                # The ritual will summon the monsters specified in a ra
 sum0chance 5
 sum1chance 20
 addstring "c*Scourge Ant Queen & 1d6*Black Soldier Ant"
-addstring "1d20*Ghoul"
+addstring "2d8*Ghoul"
 addstring "1*Desert Wraith"
 addstring "1d2*Dark Serpent"
 addstring "1*Scourge Worm"
@@ -23987,7 +23988,7 @@ squareevent
 +plane 0
 +terrain 68 #Deep Sea
 alterterrain 171 # Deep Sea Gem Deposit
-newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
+newunits 24 "1d10*Undine" 
 holdit
 endevent
 
@@ -23999,7 +24000,7 @@ squareevent
 +plane 0
 +terrain 68 #Deep Sea
 alterterrain 172 # Deep Sea Gem Deposit
-newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
+newunits 24 "2d7*Leocampus" 
 holdit
 endevent
 
@@ -24011,19 +24012,7 @@ squareevent
 +plane 0
 +terrain 68 #Deep Sea
 alterterrain 173 # Deep Sea Gem Deposit
-newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
-holdit
-endevent
-
-squareevent
-+turnnbr -1
-+player 25
-+chance 1
-+chance 7
-+plane 0
-+terrain 68 #Deep Sea
-alterterrain 174 # Deep Sea Gem Deposit
-newunits 24 "1d10*Triton & 2d3*Triton Trooper" 
+newunits 24 "1*Giant Anemone" 
 holdit
 endevent
 
