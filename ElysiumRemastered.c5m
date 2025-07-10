@@ -285,11 +285,6 @@ reformloc 329
 
 	# ---------- Terrain ------------------#
 
-#No fungus from dead forest. Fire now works against the witch, as it should. She gets a ritual to protect them. Troll King gets a more interesting "wither wood" ritual and troll forests come with built-in defenses.     
-
-selectterr 36 
-fungus 0 
-
 # Ant hills burnable, as is proper. 
 
 selectterr 234 								 
@@ -4983,159 +4978,261 @@ allitemslots
 diseaseshield 4
 descr "In ages past, powerful witches made dark bargains with the Old Ones to escape death. At life's end, they surrendered their flesh, transferring mind and power into the swarm of worms and insects that devoured their remains. This is how the Worm Souls came to be, sustained by the lifeforce granted through their pact. Though they take on a vaguely humanoid form, their bodies are living swarms. They endure indefinitely, as each creature within them is replaceable, so long as the bargain holds. Yet their existence is far from human, more a force of the land than a person in any meaningful sense."
 
-newmonster "Witch's Woods" #Forest
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 1
-invul
+newmonster "Stick Figure" #Forest
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
 poisonres 100
 fireres 100
-invisible
+stealth
 stupid
 stationary
 immobile
 nocombat
+#nozoc
+#unimportant
 immortal
 reformloc 1000
 terraformto 2
 terraformfrom 36
 terraformch 100
 spiritsight
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+spawn2d6mon 8
+spawnoffs 8
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
 
-newmonster "Witch's Woods " #Ancient Forest
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 1
-invul
+newmonster "Stick Figure " #Ancient Forest
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
 poisonres 100
 fireres 100
-invisible
+stealth
 stupid
 stationary
 immobile
 nocombat
+nozoc
+unimportant
 immortal
 reformloc 1000
 terraformto 4
 terraformfrom 37
 terraformch 100
 spiritsight
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+spawn2d6mon 8
+spawnoffs 7
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
 
-newmonster "Witch's Woods  " #Wild Forest
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 1
-invul
+newmonster "Stick Figure  " #Wild Forest
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
 poisonres 100
 fireres 100
-invisible
+stealth
 stupid
 stationary
 immobile
 nocombat
+nozoc
+unimportant
 immortal
 reformloc 1000
 terraformto 294
 terraformfrom 36
 spiritsight
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+spawn2d6mon 8
+spawnoffs 6
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
 
-newmonster "Witch's Woods   " #Primal Forest
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 1
-invul
+newmonster "Stick Figure   " #Primal Forest 
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
 poisonres 100
 fireres 100
-invisible
+stealth
 stupid
 stationary
 immobile
 nocombat
+nozoc
+unimportant
 immortal
 reformloc 1000
 terraformto 238
 terraformfrom 37
 spiritsight
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+spawn2d6mon 8
+spawnoffs 5
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
 
-newmonster "Witch's Woods    " #Enchanted Forest
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 1
-invul
+newmonster "Stick Figure    " #Enchanted Forest
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
 poisonres 100
 fireres 100
-invisible
+stealth
 stupid
 stationary
 immobile
 nocombat
+nozoc
+unimportant
 immortal
 reformloc 1000
 terraformto 8
 terraformfrom 36
 spiritsight
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+spawn2d6mon 8
+spawnoffs 4
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Their purpose is unknown. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
 
-newmonster "Witch's Woods     " #Jungle
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 1
-invul
+newmonster "Stick Figure     " 
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
 poisonres 100
 fireres 100
-invisible
+stealth
 stupid
 stationary
 immobile
 nocombat
+nozoc
+unimportant
 immortal
 reformloc 1000
 terraformto 115
 terraformfrom 116
 spiritsight
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+spawn2d6mon 8
+spawnoffs 3
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
 
-newmonster "Witch's Woods      " #Enchanted Jungle
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 1
-invul
+newmonster "Stick Figure      " #Enchanted Jungle
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
 poisonres 100
 fireres 100
-invisible
+stealth
 stupid
 stationary
 immobile
 nocombat
+nozoc
+unimportant
 immortal
 reformloc 1000
 terraformto 349
 terraformfrom 116
 spiritsight
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+spawn2d6mon 8
+spawnoffs 2
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
 
-newmonster "Witch's Woods       " #Spider Thicket
-spr1 "Sprites/Blank64.tga"
-spr2 "Sprites/Blank64.tga"
-hp 1
-invul
+newmonster "Stick Figure       " #Spider Thicket
+spr1 "Sprites/Stickfigure.tga"
+spr2 "Sprites/Stickfigure.tga"
+hp 25
 poisonres 100
 fireres 100
-invisible
+stealth
 stupid
 stationary
 immobile
 nocombat
+nozoc
+unimportant
 immortal
 reformloc 1000
 terraformto 283
 terraformfrom 36
 spiritsight
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+spawn2d6mon 8
+fear 1 
+size1x1
+descr "Stick figures are sometimes found deep in the forest, dangling from branches or arranged in oddly deliberate patterns. Most locals avoid them, muttering about 'woodland death-spirits.' Rural folklore aside, they are almost certainly just harmless rustic charms." 
+
+newmonster "Bound Thing"
+copystats "Snake"
+stealth
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Rat"
+clearweapons
+meleeweapon                1 753 # Foul Bite: d1 Slash damage.
+stealth
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Bat"
+stealth
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Wolf"
+stealth
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Dispossessed Spirit"
+stealth
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
+newmonster "Bound Thing"
+copystats "Shade"
+stealth
+stupid
+stationary
+dmgonterr -1
+dmgonterrbonus 100
+meleeambush 1
+descr “Whatever they were before, they serve the Witch now.”
+
 
 # -------------- Witch Rituals ---------------------------------------------------------------#
 
@@ -5162,20 +5259,27 @@ terr -100 (forest or jungle-like locations)
 ritpow 4
 level 1
 nostart
-cost              3   3 # 3 Fungus
-apcost 0
+cost              3   10 # 10 Fungus
 summoning
-addstring "(2)Witch's Woods"
-addstring "(4)Witch's Woods "
-addstring "(294)Witch's Woods  "
-addstring "(238)Witch's Woods   "
-addstring "(8)Witch's Woods    "
-addstring "(115)Witch's Woods     "
-addstring "(349)Witch's Woods      "
-addstring "(283)Witch's Woods       "
-squareench 50
+addstring "(2)3*Stick Figure"
+addstring "(4)3*Stick Figure "
+addstring "(294)3*Stick Figure  "
+addstring "(238)3*Stick Figure   "
+addstring "(8)3*Stick Figure    "
+addstring "(115)3*Stick Figure     "
+addstring "(349)3*Stick Figure      "
+addstring "(283)3*Stick Figure       "
 airare -1 #never cast
-descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees."
+nomonreq
+addstring "(-)Stick Figure"
+addstring "(-)Stick Figure "
+addstring "(-)Stick Figure  "
+addstring "(-)Stick Figure   "
+addstring "(-)Stick Figure    "
+addstring "(-)Stick Figure     "
+addstring "(-)Stick Figure      "
+addstring "(-)Stick Figure       "
+descr "These are the Witch's Woods, and she guards them well. Fire and poison fade at the edge of her wards. Woodcutters vanish without a trace, and nothing moves unseen among the trees. ^^Summons a stealthy ward that maintains control of the forest until revealed. It also prevents terrain destruction and grants scouting of adjacent tiles."
 
 newritual "Stir the Hollows" 
 ritpow                 4 # Witchery
@@ -28140,6 +28244,3 @@ newmonster "Netherstestguy"
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
 	
-
-
-  
