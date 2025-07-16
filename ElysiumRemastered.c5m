@@ -18419,10 +18419,10 @@ lifeforce 20
 huge
 nonmaginvul
 inanimate
-fireres 85
-coldres 85
-poisonres 85
-acidres 85
+fireres 100
+coldres 100
+poisonres 100
+acidres 100
 diseaseres
 affres 100
 unaging
