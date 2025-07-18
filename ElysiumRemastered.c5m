@@ -1608,7 +1608,7 @@ str                            4
 mor                            2 
 mr                             4 
 rank                           1 # Front rank.
-meleeweapon                0   5 # Staff: d3 Blunt damage.
+meleeweapon               -1   5 # Staff: d3 Blunt damage.
 human                            
 allitemslots                     # Has the full set of item slots.
 minorstartaff 25
@@ -2168,11 +2168,14 @@ addstartunits          "Villain"                      5
 addstartunits          "Longdead"                     5
 addstartcom            "Necromancer's Apprentice"
 
+nostdtroops # remove Crossbowman, Swordsman and Heavy Infantry
 clearrec
-#                                       %   No gold die iron
+#                                       		%   No gold die iron
+addunitrec  "Spearman"							100 5 50 0 0
+addunitrec  "Archer"							100 5 50 0 0
 addunitrec "Forlorn Hope"               		100 4 50 0 5
 addunitrec "Villain"                    		100 5 50 0 0 
-addunitrec  "Wretch"                    		100 5 10 0 0
+addunitrec  "Wretch"                    		100 5 25 0 0
 addunitrec  "Soulless Soldier"               	100 5 0 0 5
 reclimiter  "=Soulless"                       				# The preceding offer can only be used to upgrade Soulless unit(s).
 addunitrec  "Armored Soulless"                	100 5 0 0 10
