@@ -10193,6 +10193,9 @@ descr "The druid calls on one of the beings that roamed Elysium at the dawn of t
 
 selectterr 129
 iron 5
+batmap 17
+walls 
+woodengate 
 
 selectterr 835
 name "Great Garden"
@@ -10237,8 +10240,8 @@ selectmonster "Iron Fly"
 clearweapons
 rangedweaponbonus         15 "Zap" # Electric discharge, d8 Shock damage.
 meleeweapon                4  11 # Bite: d4 Slash damage.
-fireres 75
-coldres 75
+fireres -25
+coldres -25
 
 newweapon "Lightning Discharge"
 trgrank              9 # Target: any enemy in range.
@@ -10255,8 +10258,8 @@ selectmonster "Diamond Clockwork Soldier"
 clearweapons
 rangedweaponbonus          4 "Lightning Discharge" #d4 Shock damage.
 meleeweapon                1   8 # Shortsword: d6 Slash damage.
-fireres 75
-coldres 75
+fireres -25
+coldres -25
 
 newweapon "Lightning Beam"                                          
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
@@ -10273,66 +10276,66 @@ selectmonster "Diamond Iron Dragon"
 clearweapons 
 rangedweaponbonus         7 "Lightning Beam" # d7 Shock damage.
 meleeweapon               25  11 # Bite: d25 Slash damage.
-fireres 75
-coldres 75
+fireres -25
+coldres -25
 
 selectmonster "Diamond Clockwork Horror"
-fireres 75
-coldres 75
+fireres -25
+coldres -25
 
 selectmonster "Iron Scorpion"
-fireres 75
-coldres 75
-shockres 75 
+fireres -25
+coldres -25
+shockres -25 
 
 selectmonster "Emerald Clockwork Soldier"
-fireres 75
-coldres 75
-shockres 75 
+fireres -25
+coldres -25
+shockres -25 
 
 selectmonster  "Emerald Clockwork Horror"
 armor 3
-fireres 75
-coldres 75
-shockres 75 
+fireres -25
+coldres -25
+shockres -25 
 
 selectmonster "Emerald Iron Dragon"
 hp 330
-fireres 75
-coldres 75
-shockres 75 
+fireres -25
+coldres -25
+shockres -25 
 
 selectmonster "Iron Spider"
-fireres 75
-shockres 75
+fireres -25
+shockres -25
 
 selectmonster "Sapphire Clockwork Soldier"
-fireres 75
-shockres 75
+fireres -25
+shockres -25
 
 selectmonster "Sapphire Clockwork Horror"
-fireres 75
-shockres 75
+fireres -25
+shockres -25
 
 selectmonster "Sapphire Iron Dragon"
-fireres 75
-shockres 75
+fireres -25
+shockres -25
 
 selectmonster "Iron Ant"
-coldres 75
-shockres 75
+fireres -25
+shockres -25
 
 selectmonster "Ruby Clockwork Soldier"
-coldres 75
-shockres 75
+coldres -25
+shockres -25
 
 selectmonster "Ruby Clockwork Horror"
-coldres 75
-shockres 75
+coldres -25
+shockres -25
 
 selectmonster "Ruby Iron Dragon"
-coldres 75
-shockres 75
+coldres -25
+shockres -25
 
 selectmonster "Garden Master"
 descr "Tending the Burgmeister's gardens is the Garden Master, a Horticulturist who has dedicated his or her life to the study of the intricacies of plantlife in further detail.  While maintaining a beautiful garden, the Garden Master will also introduce strange and exotic plants to study the ways they can be used.  It is well known that they still maintain the ancient rituals of awakening trees and bushes to the defense of the Hoburg villages, should an overwhelming danger arise.  This bond with the land stems from an ancient time when the Hoburghers were more in tune with the nature around them.  At times the Garden Masters will travel the known world's colleges and universities in pursuit of more knowledge.  From various forgotten or recently discovered notebooks it has been possible to discern a peculiar interest in fertilization.  Though our scholars have had no opportunity to sample the soil there, Bibula has put forth the theory that the Hoburg heartlands are all worn out due to the high yields that have been demanded from the soil there, and the foul remains pouring out from the new manufacturies."
@@ -10711,6 +10714,10 @@ addunitrec  "Hog Knight"                      	100  5   50   0   10
 addunitrec  "Catapult"                        	100  1   25   0   50
 addcomrec   "Hogmeister"                       	15      25   5    0 
 addcomrec   "Burgmann"                         	20      20   5    0 
+addcomrec   "Burgmeister"                         10      30   10    0 # Replacement Burgmeister 
+	reclimiter "-Burgmeister"
+	reclimiter "-High Gardener"
+	reclimiter "-Steel Chancellor"
 addcomrec   "Horologist"                        2      75  10    0 
 libraryrec       	# +1% to chance per library point owned, to a max of +10% for 10+ library points.
 addcomrec   "Horticulturist"                    2      75  10    0 
@@ -16157,7 +16164,7 @@ addunitrec  "Mirror Guard"                    				100 3 75 0 15
 selectterr 837 
 spr "Sprites/Secretlaboratory.tga"
 name                 "Secret Laboratory"
-batmap            17 
+batmap            18 
 gold              2 # Gold: 2
 iron              3 # Iron 3
 hands             4 # Hands 4
@@ -22624,6 +22631,7 @@ immobile
 invisible
 water
 nozoc
+nocombat
 rank -1
 randomitem 100
 goldcarrier 25
@@ -22638,6 +22646,7 @@ immobile
 invisible
 water
 nozoc
+nocombat
 rank -1
 goldcarrier 100
 descr "A stash of gold and curiosities."
@@ -22651,6 +22660,7 @@ immobile
 invisible
 water
 nozoc
+nocombat
 rank -1
 goldcarrier 125
 descr "A stash of gold and curiosities."
