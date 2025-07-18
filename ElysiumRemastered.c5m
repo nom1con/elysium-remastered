@@ -23769,8 +23769,6 @@ visible
 realport            # Ships can be recruited here.
 port                # Partly Water (ships can enter this terrain).
 seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
-water
-nodrown
 
 selectterr 852
 name "Free City"
@@ -24241,7 +24239,6 @@ randloc 5 65
 newunits 27 "1*Dracolich & 1*Dusk Elder & 2*Shade Mage & 8*Bane"
 endevent 
 
-
 # ------------------------ Primal Plane ------------------------------------# 
 playerevent # Smilodon Spawn 1
 +turnnbr -1
@@ -24290,6 +24287,161 @@ randloc 7 286
 +terrain 286
 newunits 24 "1*Ri & 1*Tuatha Sorceress & 8*Tuatha Warrior"
 endevent 
+
+# ------------------------------ Void ------------------------------------------# 
+
+				# ----------------- Void Terrains -------------------
+
+selectterr 860
+name "City With No Corners"
+spr "Sprites/Citywithnocorners.tga"
+gold              5 # Gold:  5
+bonusrelics       3 # relics 3 
+apcost            1 # Action Point cost for moving through the terrain: 1
+batmap             33 # Kings Castle  
+walls              # Siege weapons can be used in battles fought in this terrain square.
+enchantedgate       # The gate of the fort is magical
+magicwalls          # Ethereal units cannot pass through walls at this fort.
+void                # The terrain is part of the void. It is possible to walk, swim, and sail here.
+nodrown             # No one will drown in this terrain. Fish can be on land and vice versa here.
+library1            # Library level +1.
+temple              # The terrain counts as a temple.  Also guarantees a minimum Relic income of 2 (before applying bonusrelics, if applicable).
+tempimmune          # The terrain will not be transformed into a wasteland when it gets too hot.
+apcost 3
+
+selectterr 861 
+name "Tesselated Web"
+spr "Sprites/Tesselatedweb.tga"
+gems         262160 # Gems: sapphires d2.
+void                # The terrain is part of the void. It is possible to walk, swim, and sail here.
+nodrown             # No one will drown in this terrain. Fish can be on land and vice versa here.
+tempimmune          # The terrain will not be transformed into a wasteland when it gets too hot.
+apcost 9
+
+			# ----------- Void Items ------------------------# 
+
+newitem "Strange Writings"
+copyspr "Tablet of the Underworld"
+rarity                                       3 (not a random item)
+type                                         7 # Misc Item.
+charmres 
+combatspell 1 "A New Way" 
+
+				# ------------- Void Monsters -----------------------# 
+
+newmonster "Echo of a Man" 
+spr1 "Sprites/Echoofaman1.tga"
+spr2 "Sprites/Echoofaman2.tga"
+armor                          0 # Armor.
+hp                             5 # Hit Points.
+str                            4 # Strength.
+mor                           99 # Morale.
+mr                             6 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon                5  10 # Life Drain: d5 Magic damage.
+float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
+poisonres                    100 # Poison immunity.
+spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+diseaseres                       # Disease immunity.
+ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
+displaced 1 
+invisible 
+maxsum              1000 # No more than 1000 can be summoned in a single battle.
+descr "These entities carry the faint imprint of humanity, as if some portion of thought or memory were captured by the strange geometries of the City Without Corners. They appear to follow habitual paths, as if repeating errands from a former life."
+
+newweapon "Summon Echo of a Man"
+trgrank              5 # Target: any border square
+range                20
+init                 4
+dmgtype             18 # Summon (the monster specified in the weapon's name, after "Summon ").
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  2 # Area: two targets.
+an                     # Armor negating.
+look                 1
+sound               57 # orchhit.smp (Summoning)
+
+newmonster "Black Monolith"
+spr1 "Sprites/Monolith1.tga"
+spr2 "Sprites/Monolith2.tga"
+armor                          5 # Armor.
+hp                           500 # Hit Points.
+str                           10 # Strength.
+mor                           99 # Morale.
+mr                             10 # Magic Resistance.
+rank                           1 # Front rank. 
+rangedweaponbonus          4 "Summon Echo of a Man"
+confusionaura 25
+fear 3
+immobile                         # Immobile (cannot move in battle).
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+stationary                       # Cannot move on world map.
+fireres                      100 # Fire immunity.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+slashres                         # Slash resistance (half damage).
+pierceres                        # Pierce resistance (half damage).
+noslots                          # Has no item slots at all.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+stonebeing
+invisible 
+descr "Dreamers and madmen alike mumble of a dark monolith standing in a city not built by hands, its angles imperfect and yet unchanging. Scholars have noted that such reports often precede periods of delirium or disappearance."
+
+newmonster " Dream Horror"
+copystats "Dream Horror"
+startitem "Strange Writings"
+descr "Horrors are astral beings that feed on the emotions of suffering, lamentation and fear.  They have strangely distorted perceptions and their motives cannot be comprehended by sane people.  Horrors are often attracted to magic and special care should be taken when performing rituals close to the Void where the Horrors thrive."
+
+newmonster " Void Hound"
+copystats "Void Hound"
+sleepres 
+charmres
+invisible 
+deployoutside 1 
+descr "'Lean and athirst', Void Hounds are pale gaunt hounds with bluish tongues that feed on suffering and fear.  They evolved in a time that flows orthogonally to our time and therefore manifest through angles and corners.  Hunting those who have been touched by the Beyond, the Hounds manifest in corners, where time is susceptible to change.  The Hounds appear to teleport, but this is only due to time flowing in another direction.  It is said that gibbering lunatics speak of a city without corners somewhere deep in the void where the hounds are bred for a Scourge to come."
+
+				# --------------- Void Spawning Events ---------------------------------# 
+
+
+playerevent #City With No Corners"
++turnnbr -1
++player 25
++chance 50
+randloc 9 50
++terrain 50
+newunits 24 "1*Black Monolith & 3d10* Void Hound & 2d4*Dream Horror & 4d10*Echo of a Man & 1* Dream Horror"
+alterterrain 860
+holdit
+endevent
+
+playerevent #Tesselated Web 
++turnnbr -1
++player 25
++chance 50
+randloc 9 50
++terrain 50
+newunits 24 "5d6*Phase Spider"
+alterterrain 861
+holdit
+endevent
+
+playerevent #Tesselated Web 
++turnnbr -1
++player 25
++chance 50
+randloc 9 50
++terrain 50
+newunits 24 "5d6*Phase Spider"
+alterterrain 861
+holdit
+endevent
 
 # ------------------------ Planar Recruitment ---------------------------------------------# 
 
