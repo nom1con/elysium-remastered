@@ -1418,6 +1418,85 @@ mr 8 #from 6
 clearweapons
 siegeweapon               12 854 			# Dread Projection: Fear: d12 vs morale.
 rangedweaponbonus          9 855 			# Dread Projection: Fear: d9 vs morale.
+
+# Add more Longdead archers to the pool (+ 3 archers)
+
+newmonster    "Longdead"                                                 #  309
+descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
+spr1 "Sprites/Longdead_archer1.png"
+spr2 "Sprites/Longdead_archer2.png"
+armor                          0 # Armor.
+hp                             3 # Hit Points.
+str                            4 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               0   7 # Bow: d3 Pierce damage.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+allitemslots                     # Has the full set of item slots.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+
+
+newmonster    "Longdead"                                                 #  309
+descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
+spr1 "Sprites/Longdead_archer1.png"
+spr2 "Sprites/Longdead_archer2.png"
+armor                          0 # Armor.
+hp                             3 # Hit Points.
+str                            4 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               0   7 # Bow: d3 Pierce damage.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+allitemslots                     # Has the full set of item slots.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+
+
+newmonster    "Longdead"                                                 #  309
+descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
+spr1 "Sprites/Longdead_archer1.png"
+spr2 "Sprites/Longdead_archer2.png"
+armor                          0 # Armor.
+hp                             3 # Hit Points.
+str                            4 # Strength.
+mor                           99 # Morale.
+mr                             1 # Magic Resistance.
+rank                           0 # Mid rank.
+rangedweapon               0   7 # Bow: d3 Pierce damage.
+meleeweapon                0   0 # Fist: d1 Blunt damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+noheal                           # Does not heal naturally.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+allitemslots                     # Has the full set of item slots.
+inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
+
+
+
 	
 selectmonster "Wight" 						# Can overheal with drain life, a minor buff
 hpoverflow 1
