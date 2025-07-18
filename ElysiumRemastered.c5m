@@ -2021,7 +2021,7 @@ selectritual "Raven Spy" 						# Two utility spells are rarestart, for more cons
 rarestart
 	
 selectritual "Pierce the Veil of Death" 
-rarestart
+free
 
 selectritual "Ravenous Curse" 					# noew exclusive to Markgraf
 level 9
