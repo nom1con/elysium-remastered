@@ -2080,6 +2080,11 @@ addstring     "(-78)2d2*Ghoul"
 addstring     "(-78)2*Pale Rider"
 descr "Summon one or more minor undead that haunts Elysium such as wights or longdead warriors. Living creatures attracted by necromantic magic will sometimes appear instead."
 
+selectritual "Mummification"
+level 1
+rarestart
+afterprev
+
 newritual "Stygian invocation"
 ritpow                 1 # Necromancy
 level                  1
