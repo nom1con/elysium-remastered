@@ -2108,7 +2108,7 @@ descr "Summon one or more minor spirits from Hades such as ghost warriors or sha
 newritual "Major Invocation" 
 ritpow                 1 # Necromancy
 level                  2
-cost              5   75 # 75 Hands
+cost              5   60 # 60 Hands
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "(-78)c*Bane Lord & 1d4*Bane"
