@@ -1477,7 +1477,11 @@ fast
 	
 selectmonster "Abomination" 
 deployoutside 1 							# Deploys outside in fort battles, does not seem like something you would keep inside
-	
+
+selectweapon 476
+aoe 2
+
+
 selectmonster "Carrion" 					# better suicide and scouting but stays dead longer
 putridexpl 5 								#from 3
 immortalap 9								#From 6
