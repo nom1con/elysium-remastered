@@ -1921,7 +1921,7 @@ descr "The corpse of a powerful beast, reanimated to serve the necromancer. Is h
 
 newweapon "Shadow Breath"
 trgrank              9 # Target: any enemy in range.
-range                5
+range                6
 init                 4
 dmgtype              7 # Magic.
 dmg                  5 
@@ -1961,7 +1961,7 @@ descr "When a mighty creature dies a violent death, its rage may keep it tethere
 	
 newweapon "Eyes of the Bodak"
 trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
-range               7
+range               8
 init                10
 dmgtype             12 # Special damage (determined by bitmask where this attack is used).
 dmg                  0 
