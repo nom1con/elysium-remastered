@@ -1827,7 +1827,7 @@ terraformto 37
 terraformch 10
 reanimate 2
 spawnmon 100
-descr "If one is desperate enough to seek a pathway to Hades, the crooked branches of the Gulthias Tree is said to point the way. Formed when an ancient tree is corrupted by necromantic magic, it drains life from the land, turning forests into Shadow Woods. It raises nearby corpses as mindless thralls to guard it and spread its influence. Though rooted in place, it's notoriously hard to destroy without fire or divine magic."
+descr "Formed when an ancient tree is corrupted by necromantic magic, the Gulthias Tree drains life from the surrounding land, slowly transforming forests into Shadow Woods. It raises nearby corpses to serve as mindless guardians and spreads its blight outward. It is remarkably difficult to destroy without fire or divine magic. Those desperate to reach Hades claim its twisted branches point the way."
 
 newmonster "Blight"
 copystats "Messenger Crow"
@@ -1852,6 +1852,7 @@ forest1
 hatesterr 37
 slow
 loner
+descr "The sickly flames sometimes seen in dying forests are in fact ambient necrotic phenomena, migrating outward from the Gulthias Tree."
 
 newmonster "Blight"
 copystats "Messenger Crow"
@@ -1876,6 +1877,7 @@ jungle1
 hatesterr 37
 slow
 loner
+descr "The sickly flames sometimes seen in dying forests are in fact ambient necrotic phenomena, migrating outward from the Gulthias Tree."
 
 newmonster "Bane Giant"
 spr1 "Sprites/Banegiant1.tga"
@@ -2154,17 +2156,16 @@ apcost 		       5
 terr                  -97 # Required terrain: Ancient Forests or similar.
 nomonreq                 # Monsters in strings beginning with "(-)" must not be here.
 addstring     "(-)Gulthias Tree"     # This string will only be used by nomon[...] commands.
-# gainrit                1 # Learn Passage to the Underworld. TODO: DOESN'T WORK FOR SOME REASON
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "Gulthias Tree"
 rarestart
 aialways 50
-descr "Corrupt an ancient oak and turn it into a Gulthias Tree, an undead sentinel that will reanimate corpses over time. The Gulthias Tree feeds on the forest, and will eventually turn it into a Shadow Wood."
+gainrit 1
+descr "Corrupt an ancient oak into a Gulthias Tree, an undead sentinel that reanimates nearby corpses and drains life from the surrounding forest. Over time, it will transform the area into a Shadow Wood. Its twisted branches are said to point the way to Hades."
 
 newritual "Passage to the Underworld"  
 ritpow 1 				#Necro
 level 2
-# nostart # TODO: Doesn't work right with "Summon Gulthias Tree
 cost 5 100 				#Hands
 terr 37 				#Shadow Wood only
 planereq 0
@@ -2174,7 +2175,7 @@ soundfx 57
 makeportal 1000
 centerloc
 aimaxcast 3
-afterprev
+nostart 
 aialways 999 
 descr "In the heart of the Shadow Wood, the necromancer performs a ritual to open a trail to the bleak lands of Hades. Creatures of Elysium may enter, and creatures of Hades may leave, though the mortal world is often of little interest to them." 
 
