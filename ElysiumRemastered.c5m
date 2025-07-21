@@ -2032,6 +2032,12 @@ selectritual "Ravenous Curse" 					# noew exclusive to Markgraf
 level 9
 free 
 
+selectritual "Wall of Unlife" 					# Defensive Rituals bundled 
+nexttoo 
+
+selectritual "Pyramid of Skulls"
+nostart 
+
 selectritual "Stygian Paths" 					# Moved to demilich
 free 
 level 9
