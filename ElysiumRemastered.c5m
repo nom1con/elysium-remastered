@@ -2042,10 +2042,6 @@ selectritual "Raise Legion" 					# Bane armies now Hades exclusive
 level 9
 free
 
-selectritual "Mummification"
-level 1
-rarestart
-
 newritual     "Raise Legion "                                              #  29
 ritpow                 1 # Necromancy
 level                  2
@@ -2086,6 +2082,23 @@ addstring     "(-78)2d2+1*Ancient Warrior"
 addstring     "(-78)2d2*Ghoul"
 addstring     "(-78)2*Pale Rider"
 descr "Summon one or more minor undead that haunts Elysium such as wights or longdead warriors. Living creatures attracted by necromantic magic will sometimes appear instead."
+
+# Mummification moved to level 1, but get some learning restrictions so you dont start with it
+
+newritual "Mummification " 
+ritpow                 1 # Necromancy
+level                  1
+cost              5   20 # 20 Hands
+terr                 -18 # temple/pyramid.
+terrboost            165 # Adds 1 to the number of monsters summoned in this terrain: Pyramids.
+summoning                
+addstring     "2*Mummy"
+afterprev 
+descr "The Necromancer animates a pair of mummies and takes control over them.  The spell can only be cast in temples and pyramids and it will be slightly more effective in the latter.  Mummies are powerful undead beings that reform in their home temple if they should be slain."
+
+selectritual "Mummification"
+level 9 
+free 
 
 newritual "Stygian invocation"
 ritpow                 1 # Necromancy
