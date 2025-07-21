@@ -1608,7 +1608,8 @@ hp                            55
 str                            9 
 mor                           99 
 mr                             7 
-rank                           0 # mid rank.
+rank                           1 # front rank.
+rearpos                          # Rank-, deploys further back.
 siegeweapon               30  98 # Drop Boulder: d30 Blunt damage.
 meleeweapon               21  11 # Bite: d15 Slash damage.
 flying                          
@@ -1676,6 +1677,7 @@ str                            4
 mor                            3 
 mr                             4 
 rank                           1 # Front rank.
+rearpos                          # Rank-, deploys further back.
 rangedweapon               0   7 # Bow: d3 Pierce damage.
 meleeweapon                0  20 # Mace: d5 Blunt damage.
 human                            
@@ -1691,6 +1693,7 @@ str                            4
 mor                            2 
 mr                             4 
 rank                           1 # Front rank.
+frontpos                          # Front+
 meleeweapon               -1   5 # Staff: d3 Blunt damage.
 human                            
 allitemslots                     # Has the full set of item slots.
