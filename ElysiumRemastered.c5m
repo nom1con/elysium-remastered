@@ -2039,6 +2039,10 @@ selectritual "Raise Legion" 					# Bane armies now Hades exclusive
 level 9
 free
 
+selectritual "Mummification"
+level 1
+rarestart
+
 newritual     "Raise Legion "                                              #  29
 ritpow                 1 # Necromancy
 level                  2
@@ -2129,11 +2133,12 @@ descr "This incantation will summon forth powerful undead servants, such as Bans
 newritual     "Summon Gulthias Tree"                                      
 ritpow                 1 # Necromancy
 level                  2
-cost              5   40 # 40 Hands
+cost               5   25 # 25 Hands
 apcost 		       5
 terr                  -97 # Required terrain: Ancient Forests or similar.
 nomonreq                 # Monsters in strings beginning with "(-)" must not be here.
 addstring     "(-)Gulthias Tree"     # This string will only be used by nomon[...] commands.
+# gainrit                1 # Learn Passage to the Underworld. TODO: DOESN'T WORK FOR SOME REASON
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "Gulthias Tree"
 rarestart
@@ -2143,8 +2148,8 @@ descr "Corrupt an ancient oak and turn it into a Gulthias Tree, an undead sentin
 newritual "Passage to the Underworld"  
 ritpow 1 				#Necro
 level 2
-rarestart
-cost 5 200 				#Hands
+# nostart # TODO: Doesn't work right with "Summon Gulthias Tree
+cost 5 100 				#Hands
 terr 37 				#Shadow Wood only
 planereq 0
 makeportal 1000
@@ -2154,7 +2159,7 @@ makeportal 1000
 centerloc
 aimaxcast 3
 afterprev
-aialways 999
+aialways 999 
 descr "In the heart of the Shadow Wood, the necromancer performs a ritual to open a trail to the bleak lands of Hades. Creatures of Elysium may enter, and creatures of Hades may leave, though the mortal world is often of little interest to them." 
 
 # Remote raise dead. This won't work with remote summoning, so has to be faked. 
