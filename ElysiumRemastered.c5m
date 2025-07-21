@@ -2164,6 +2164,7 @@ nomonreq                 # Monsters in strings beginning with "(-)" must not be 
 addstring     "(-)Gulthias Tree"     # This string will only be used by nomon[...] commands.
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "Gulthias Tree"
+alterloc 37
 rarestart
 aialways 50
 gainrit 1
