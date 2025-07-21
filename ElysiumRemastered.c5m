@@ -2262,27 +2262,29 @@ addstartcom            "Necromancer's Apprentice"
 nostdtroops # remove Crossbowman, Swordsman and Heavy Infantry
 clearrec
 #                                       		%   No gold die iron
-addunitrec  "Spearman"							100 5 50 0 0
-addunitrec  "Archer"							100 5 50 0 0
+addunitrec  "Spearman"					100 5 50 0 0
+addunitrec  "Archer"					100 5 50 0 0
+addunitrec  "Catapult"                        		100  1   25   0   50
 addunitrec "Forlorn Hope"               		100 4 50 0 5
 addunitrec "Villain"                    		100 5 50 0 0 
 addunitrec  "Wretch"                    		100 5 25 0 0
 addunitrec  "Soulless Soldier"               	100 5 0 0 5
-reclimiter  "=Soulless"                       				# The preceding offer can only be used to upgrade Soulless unit(s).
+	reclimiter  "=Soulless"                       				# The preceding offer can only be used to upgrade Soulless unit(s).
 addunitrec  "Armored Soulless"                	100 5 0 0 10
-reclimiter  "=Soulless"                       				# The preceding offer can only be used to upgrade Soulless unit(s).
+	reclimiter  "=Soulless"                       				# The preceding offer can only be used to upgrade Soulless unit(s).
 addunitrec  "Armored Longdead"                	100 5 0 0 10
-reclimiter  "=Longdead"                       				# The preceding offer can only be used to upgrade Longdead unit(s).
+	reclimiter  "=Longdead"                       				# The preceding offer can only be used to upgrade Longdead unit(s).
 addunitrec  "Bane Fire Archer"                	100 5 0 0 0
-recxcost     5  10  
-recterr     -37                               				# 10 Hands additional cost. Hades citadels only
-reclimiter  "=Longdead"                       				# The preceding offer can only be used to upgrade Longdead unit(s).
+	recxcost     5  10  
+	recterr     -37                               				# 10 Hands additional cost. Hades citadels only
+	reclimiter  "=Longdead"                       				# The preceding offer can only be used to upgrade Longdead unit(s).
 addunitrec  "Bane-Bones"                      	100 5 0 0 5
-recxcost     5   5 
-recterr  -37                          		  				#  5 Hands additional cost. Hades citadel only
-reclimiter  "=Longdead"                       				# The preceding offer can only be used to upgrade Longdead unit(s).
+	recxcost     5   5 
+	recterr  -37                          		  				#  5 Hands additional cost. Hades citadel only
+	reclimiter  "=Longdead"  # The preceding offer can only be used to upgrade Longdead unit(s).
+addcomrec   "Captain"                          	20 40 10 0 # once per offer; extra.
 addcomrec   "Necromancer's Apprentice"       	3 55 20 0 	
-addcomrec   "Necromancer's Apprentice"			10 55 20 0 	# Extra apprentice chance if you don't have any 
+addcomrec   "Necromancer's Apprentice"	 	10 55 20 0 	# Extra apprentice chance if you don't have any 
 	reclimiter "-Necromancer's Apprentice"
 libraryrec                                    				# +2% to chance per library point owned, to a max of +20% for 10+ library points.
 
