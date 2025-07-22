@@ -1272,7 +1272,6 @@ selectclass 1  # Baron
 	templebonusdescr "Monks and Unicorn knights"
 
 ######################## Necromancer #####################################
-
 # ------------ Sanity Changes -------------------------------# 
 
 # Permanent insanity discouraged use of Raise Dead, and led to strange gameplay patterns such as only raising dead with apprentices and ferrying around insane commanders. Now sanity recovers over time - still penalizing, but not prohibitively so, to encourage more use of raise dead rituals. 
@@ -1423,8 +1422,8 @@ rangedweaponbonus          9 855 			# Dread Projection: Fear: d9 vs morale.
 
 newmonster    "Longdead"                                                 #  309
 descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
-spr1 "Sprites/Longdead_archer1.png"
-spr2 "Sprites/Longdead_archer2.png"
+spr1 "Sprites/Longdead_archer1.tga"
+spr2 "Sprites/Longdead_archer2.tga"
 armor                          0 # Armor.
 hp                             3 # Hit Points.
 str                            4 # Strength.
@@ -1448,8 +1447,8 @@ inanimate                        # Unaffected by life drain, pain, death, bleedi
 
 newmonster    "Longdead"                                                 #  309
 descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
-spr1 "Sprites/Longdead_archer1.png"
-spr2 "Sprites/Longdead_archer2.png"
+spr1 "Sprites/Longdead_archer1.tga"
+spr2 "Sprites/Longdead_archer2.tga"
 armor                          0 # Armor.
 hp                             3 # Hit Points.
 str                            4 # Strength.
@@ -1473,8 +1472,8 @@ inanimate                        # Unaffected by life drain, pain, death, bleedi
 
 newmonster    "Longdead"                                                 #  309
 descr "The Longdead are so called because their bones have lain long enough in the ground that worms and other corpse-feeders have gnawed away most of the flesh.  While most longdead are the result of necromantic practices, there are numerous reports of skeletal remains walking about without necromantic leadership.  While tempting, most of us have discarded the idea that the bones of mortals carry memories, and independent longdead arise when the memories of the bones have been weakened enough to forget that they are dead, but remember how to walk.  This Dementia Theory is at least more attractive than the Bored Bones Theory that claims that everything is inhabited by a spirit, a spirit that can become bored with lying around immobile and therefore animates the vessel it inhabits, in this case a set of unfleshed bones."
-spr1 "Sprites/Longdead_archer1.png"
-spr2 "Sprites/Longdead_archer2.png"
+spr1 "Sprites/Longdead_archer1.tga"
+spr2 "Sprites/Longdead_archer2.tga"
 armor                          0 # Armor.
 hp                             3 # Hit Points.
 str                            4 # Strength.
@@ -1494,9 +1493,6 @@ diseaseres                       # Disease immunity.
 pierceres                        # Pierce resistance (half damage).
 allitemslots                     # Has the full set of item slots.
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-
-
-
 	
 selectmonster "Wight" 						# Can overheal with drain life, a minor buff
 hpoverflow 1
@@ -1824,10 +1820,10 @@ fireres                      -50 # 50 Fire Vulnerability.
 hpoverflow 1
 terraformfrom -97
 terraformto 37
-terraformch 10
+terraformch 25
 reanimate 2
 spawnmon 100
-descr "If one is desperate enough to seek a pathway to Hades, the crooked branches of the Gulthias Tree is said to point the way. Formed when an ancient tree is corrupted by necromantic magic, it drains life from the land, turning forests into Shadow Woods. It raises nearby corpses as mindless thralls to guard it and spread its influence. Though rooted in place, it's notoriously hard to destroy without fire or divine magic."
+descr "Formed when an ancient tree is corrupted by necromantic magic, the Gulthias Tree drains life from the surrounding land, slowly transforming forests into Shadow Woods. It raises nearby corpses to serve as mindless guardians and spreads its blight outward. It is remarkably difficult to destroy without fire or divine magic. Those desperate to reach Hades claim its twisted branches point the way."
 
 newmonster "Blight"
 copystats "Messenger Crow"
@@ -1852,6 +1848,7 @@ forest1
 hatesterr 37
 slow
 loner
+descr "The sickly flames sometimes seen in dying forests are in fact ambient necrotic phenomena, migrating outward from the Gulthias Tree."
 
 newmonster "Blight"
 copystats "Messenger Crow"
@@ -1876,6 +1873,7 @@ jungle1
 hatesterr 37
 slow
 loner
+descr "The sickly flames sometimes seen in dying forests are in fact ambient necrotic phenomena, migrating outward from the Gulthias Tree."
 
 newmonster "Bane Giant"
 spr1 "Sprites/Banegiant1.tga"
@@ -2030,6 +2028,12 @@ selectritual "Ravenous Curse" 					# noew exclusive to Markgraf
 level 9
 free 
 
+selectritual "Wall of Unlife" 					# Defensive Rituals bundled 
+nexttoo 
+
+selectritual "Pyramid of Skulls"
+nostart 
+
 selectritual "Stygian Paths" 					# Moved to demilich
 free 
 level 9
@@ -2041,10 +2045,6 @@ free
 selectritual "Raise Legion" 					# Bane armies now Hades exclusive  
 level 9
 free
-
-selectritual "Mummification"
-level 1
-rarestart
 
 newritual     "Raise Legion "                                              #  29
 ritpow                 1 # Necromancy
@@ -2086,6 +2086,23 @@ addstring     "(-78)2d2+1*Ancient Warrior"
 addstring     "(-78)2d2*Ghoul"
 addstring     "(-78)2*Pale Rider"
 descr "Summon one or more minor undead that haunts Elysium such as wights or longdead warriors. Living creatures attracted by necromantic magic will sometimes appear instead."
+
+# Mummification moved to level 1, but get some learning restrictions so you dont start with it
+
+newritual "Mummification " 
+ritpow                 1 # Necromancy
+level                  1
+cost              5   20 # 20 Hands
+terr                 -18 # temple/pyramid.
+terrboost            165 # Adds 1 to the number of monsters summoned in this terrain: Pyramids.
+summoning                
+addstring     "2*Mummy"
+afterprev 
+descr "The Necromancer animates a pair of mummies and takes control over them.  The spell can only be cast in temples and pyramids and it will be slightly more effective in the latter.  Mummies are powerful undead beings that reform in their home temple if they should be slain."
+
+selectritual "Mummification"
+level 9 
+free 
 
 newritual "Stygian invocation"
 ritpow                 1 # Necromancy
@@ -2137,31 +2154,30 @@ newritual     "Summon Gulthias Tree"
 ritpow                 1 # Necromancy
 level                  2
 cost               5   25 # 25 Hands
-apcost 		       5
 terr                  -97 # Required terrain: Ancient Forests or similar.
 nomonreq                 # Monsters in strings beginning with "(-)" must not be here.
 addstring     "(-)Gulthias Tree"     # This string will only be used by nomon[...] commands.
-# gainrit                1 # Learn Passage to the Underworld. TODO: DOESN'T WORK FOR SOME REASON
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "Gulthias Tree"
-rarestart
+afterprev
 aialways 50
-descr "Corrupt an ancient oak and turn it into a Gulthias Tree, an undead sentinel that will reanimate corpses over time. The Gulthias Tree feeds on the forest, and will eventually turn it into a Shadow Wood."
+gainrit 1
+descr "Corrupt an ancient oak into a Gulthias Tree, an undead sentinel that reanimates nearby corpses and drains life from the surrounding forest. Over time, it will transform the area into a Shadow Wood. Its twisted branches are said to point the way to Hades."
 
 newritual "Passage to the Underworld"  
 ritpow 1 				#Necro
 level 2
-# nostart # TODO: Doesn't work right with "Summon Gulthias Tree
 cost 5 100 				#Hands
 terr 37 				#Shadow Wood only
 planereq 0
-makeportal 1000
 planeloc 5 				#Hades, same place
 soundfx 57
 makeportal 1000
+planeloc -5
+makeportal 1000
 centerloc
 aimaxcast 3
-afterprev
+nostart 
 aialways 999 
 descr "In the heart of the Shadow Wood, the necromancer performs a ritual to open a trail to the bleak lands of Hades. Creatures of Elysium may enter, and creatures of Hades may leave, though the mortal world is often of little interest to them." 
 
@@ -2179,40 +2195,25 @@ putcorpses -35 #strips corpses
 insanity 10
 descr "Raises the dead in a remote location. This ritual is not accurate and will deviate to somewhere with lots of corpses. The dead will rise under the Necromancers command with a Longdead Bannerman to lead them."
 
-newritual     "Lichcraft" 1                                                 
-descr "With this ritual the Necromancer turns himself into a Lich.  The Lich is a very powerful immortal being that will quickly recover from insanity."
+newritual     "Lichcraft "                                                  
 copyritual "Lichcraft"
 ritpow                 1 # Necromancy
 level                  3
 cost              5  300 # 300 Hands
+descr "With this ritual the Necromancer turns himself into a Lich.  The Lich is a very powerful immortal being that will quickly recover from insanity."
 
-newritual     "Greater Lichcraft" 1                                        
+newritual     "Greater Lichcraft "                                         
 ritpow                 1 # Necromancy
 level                  3
 cost              5  500 # 500 Hands
 terr                  -2 # Required terrain: temples.
 transformtarg          1 # Target is transformed into the monster specified in a random string.
-gainrit                2 # Caster learns the next ritual.
+gainrit                1 # Caster learns the next ritual.
 updatehome               # Updates home (immortal resurrection location) for target unit to where he stands.
 forgetcurrit             # Caster will forget this ritual after casting it.
 nostart                  # Never start with this ritual, and it cannot be learned by mastery rituals. It can be learned via the gainrit or nexttoo commands.
 addstring     "Demilich"
 descr "With this ritual the Lich gets rid of the shackles of maintaining a physical body and becomes a Demilich.  Having no real body makes the Demilich able to travel on the paths of the dead, enabling him to cross the entire world in no time.  Demiliches are also unkillable in combat, by normal means at least."
-
-# Planar swap was very powerful. Now only for lich and demilich. Also cannot be cast while under the effect of stygian paths, which makes it much harder to planeswap enemy armies.
-
-newritual "Planar Inversion"  
-ritpow                 1 # Necromancy
-level                  3
-cost              5   150 # 150 Hands #also more expensive
-planeswap              5 # Swaps all units at target location between Hades and Elysium.
-centercaster             # Center screen on caster.
-soundfx               43 # Sound effect when the ritual is cast: skeleton.smp.
-closewin                 # Closes cast ritual window.
-aionlyplane            5 # AI will only cast ritual when on this plane: Hades.
-benrestrict 33554432 
-afterprev
-descr "This ritual causes a minor planar conjunction between Elysium and Hades. The living will take the place of the dead, and the dead will be freed into the mortal world. It will affect everyone at the current location."  
 
 # Stygian paths is cool but broken in so many ways. Now moved to Demilich, and cannot be combined with planar swap.
 
@@ -2232,6 +2233,21 @@ closewin                 # Closes cast ritual window.
 apcost                -1 # Actual AP cost: 0
 nostart
 descr "The Demilich shifts into the world of Hades with his entire army.  In Hades he will be able to rush at incredible speed until the spell ends.  The spell ends after one month and when it does the caster and his men will return to Elysium again."
+
+# Ditto for Planar swap. Demilich now a repository for all the most broken toys of the Necro. Also cannot be cast while under the effect of stygian paths, which makes it much harder to planeswap enemy armies.
+
+newritual "Planar Inversion"  
+ritpow                 1 # Necromancy
+level                  3
+cost              5   150 # 150 Hands #also more expensive
+planeswap              5 # Swaps all units at target location between Hades and Elysium.
+centercaster             # Center screen on caster.
+soundfx               43 # Sound effect when the ritual is cast: skeleton.smp.
+closewin                 # Closes cast ritual window.
+aionlyplane            5 # AI will only cast ritual when on this plane: Hades.
+benrestrict 33554432 
+afterprev
+descr "This ritual causes a minor planar conjunction between Elysium and Hades. The living will take the place of the dead, and the dead will be freed into the mortal world. It will affect everyone at the current location."  
 
 selectritual "Lichcraft"
 level 9
