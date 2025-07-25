@@ -3,8 +3,8 @@ icon "Smallbanner.tga"
 description "An overhaul mod. Flavor, balance and content." 
 modprio 1 # Will be overwritten by other mods in case of conflict.
 
-# terrains used 800-837
-# terrain groups used 1100 -1122
+# terrains used 800 to 837
+# terrain groups used -1099 to -1122
 
 ############################ General changes ################################### 
 
@@ -470,7 +470,7 @@ inanimate              # Doesn't affect Lifeless units.
 
 newweapon "Disarm"
 trgrank 0
-init 30
+init 20
 dmgtype 7
 dmg 999
 
@@ -489,7 +489,7 @@ stupid
 nozoc
 unimportant
 inanimate
-invisible
+stealth
 invul
 fireres 100
 coldres 100
@@ -1272,6 +1272,16 @@ selectclass 1  # Baron
 	templebonusdescr "Monks and Unicorn knights"
 
 ######################## Necromancer #####################################
+
+# ------ Necromancer Terrain ------------# 
+
+selectterrgroup -1099 
+setname "Ancient Forests and similar, including Shadow Woods"
+addterr 4
+addterr 37 
+addterr 238
+addterr 131  
+
 # ------------ Sanity Changes -------------------------------# 
 
 # Permanent insanity discouraged use of Raise Dead, and led to strange gameplay patterns such as only raising dead with apprentices and ferrying around insane commanders. Now sanity recovers over time - still penalizing, but not prohibitively so, to encourage more use of raise dead rituals. 
@@ -1957,6 +1967,7 @@ charmres                         # Charm immunity.
 diseaseres                       # Disease immunity.
 stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
 ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
+planeshift 1 
 size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
 descr "When a mighty creature dies a violent death, its rage may keep it tethered to the material plane, lingering in the form of a Greater Shade. These malign beings haunt the dark corners of Elysium but can be summoned to serve a skilled necromancer." 	
 	
@@ -1985,13 +1996,13 @@ rangedweaponbonus  	4 "Eyes of the Bodak"	# Special damage: Decay.
 meleeweapon 		6 10					#life drain d6
 fear 1
 undead
-sleepres
-charmres 
-spiritsight                      			# Can see units with Stealth, Forest Stealth, or Invisible.
-allitemslots
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
 poisonres 100
 coldres 100
-fireres -50
+spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
+allitemslots
 descr "Some men carry their hatred beyond death, refusing to let go. They return as Bodaks, sustained by bitterness and malice. Though they rarely speak, their eyes radiate hostility, and meeting their gaze is unwise."
 
 # ------------- Necromancer Ritual Edits ----------------------------------# 
@@ -2154,7 +2165,7 @@ newritual     "Summon Gulthias Tree"
 ritpow                 1 # Necromancy
 level                  2
 cost               5   25 # 25 Hands
-terr                  -97 # Required terrain: Ancient Forests or similar.
+terr                  -1099 # Required terrain: Ancient Forests or similar.
 nomonreq                 # Monsters in strings beginning with "(-)" must not be here.
 addstring     "(-)Gulthias Tree"     # This string will only be used by nomon[...] commands.
 summoning                # The ritual will summon the monsters specified in a random string.
@@ -2475,8 +2486,14 @@ fear                             # Causes Fear (1d7 vs morale) in adjacent squar
 nametype                      15 # Old Nordic male.
 randommisc                    100 # 100% chance to spawn with a random misc magic item.
 greedy                         1 # This unit will never give away its magic items voluntarily.
-pierceres                        # Pierce resistance (half damage).
 undead
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+affres 75 
 terraformfrom 820
 terraformto 0
 terraformch 100
@@ -2499,15 +2516,14 @@ spellweaponbonus          21   2 # Serpent Magic at level 2.
 meleeweapon                4  11 # Bite: d4 Slash damage.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
-fireres                       50 # 50 Fire Resistance.
-coldres                       50 # 50 Cold Resistance.
-shockres                      50 # 50 Shock Resistance.
-poisonres 100
-diseaseres
-sleepres
-nametype                       7 # Greek male.	
 undead
-randommisc 50
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+poisonres 100
+coldres 100
+nametype                       7 # Greek male.	
+randommisc 25
 unique 1
 descr "This levitating husk was once an ancient beholder, worshipped as a god by the pygmy tribes. It now serves the will of a masterful necromancer. The creature is silent, obedient, and dangerous. It also never stops staring. The effect is deeply unsettling, and it takes a truly unhinged person to tolerate it for long. Turning it to face the wall does not help; it just slowly rotates back around like a compass."
 
@@ -2561,13 +2577,12 @@ rank                           1 # Front rank.
 rangedweapon50s            4 275 # Icy Breath: d4 Cold damage.
 meleeweapon                8  "Spectral Bite" # Bite: d8 Slash damage.
 snow                             # -1 AP to enter snow-covered squares.
-coldres                      100 # Cold immunity.
-fireres                      -50 # 50 Fire Vulnerability.
 fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
+undead
 coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
-undead
+fireres                      -50 # 50 Fire Vulnerability.
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
 stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
@@ -2693,6 +2708,7 @@ meleeweapon                8 501 # Touch of the Dead: d14 Cold damage.
 spellweapon         10    2 # Foul Magic at level 2.
 coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
+fireres                     -100 # 100 Fire Vulnerability.
 undead
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
@@ -2701,7 +2717,6 @@ diseaseres                       # Disease immunity.
 immortal
 allitemslots                     # Has the full set of item slots.
 inanimate                        # Unaffected by life drain, pain, death, bleeding, healing, regeneration, etc.
-fireres                     -100 # 100 Fire Vulnerability.
 immortalap                     6 # When the monster dies, it costs 6 AP to respawn.
 reformloc                   1000 # If killed, the monster will reform in its home square.
 diseaseshield                  1 # Any enemy attacking this unit in melee will be diseased unless it succeeds with a magic resistance check.
@@ -2776,9 +2791,9 @@ huge                             # The monster is Huge (3x3 squares in size), ca
 float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
 undead
 poisonres                    100 # Poison immunity.
+coldres                     100 # Cold immunity 
 sleepres                         # Sleep immunity.
 charmres                         # Charm immunity.
-shockres                     100 # Shock immunity.
 diseaseres                       # Disease immunity.
 ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
 noslots                          # Has no item slots at all.
@@ -8025,7 +8040,8 @@ hp 9
 str 5
 mor 5
 mr 5 
-rank 0
+rank 1
+rearpos 
 meleeweapon 3 4 #spear d7
 rangedweapon 0 "Hunting Javelins"
 shield
@@ -8042,7 +8058,8 @@ hp 10
 str 5
 mor 5
 mr 5 
-rank 0
+rank 1
+rearpos 
 meleeweapon 3 4 #spear d7
 rangedweapon 0 "Hunting Javelins"
 shield
@@ -8059,7 +8076,7 @@ hp 8
 str 5
 mor 5
 mr 6 
-rank 0
+rank 1
 meleeweapon 0 8 		# Shortsword: d5 Slash damage.
 meleeweapon 0 8 		# Shortsword: d5 Slash damage.
 evasion 25
@@ -8077,7 +8094,7 @@ hp 9
 str 5
 mor 5
 mr 6 
-rank 0
+rank 1
 meleeweapon 1 8 		# Shortsword: d6 Slash damage.
 evasion 25
 shield
@@ -8581,6 +8598,7 @@ addcomrec "Steel Mother"			-1 1 25 5 0
 	reclimiter "+Barbarian Warlord"
 	reclimiter "+Barbarian King"
 
+selectclass 8 # necessary for some reason to keep the barbarian from getting the senators gold bonus. 
 ################################## Senator ################################################## 
 
 # ------------ Senator Terrain ------------------------
@@ -9050,7 +9068,14 @@ mr 6
 mor 15
 str 5
 meleeweapon 8 222
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
 undead
+spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+stealth                          # Can only be seen by units with Acute Senses or Spirit Sight.
+diseaseres                       # Disease immunity.
 float
 planeshift 1
 ethereal
@@ -12632,6 +12657,7 @@ meleeweapon                5  10 # Life Drain: d5 Magic damage.
 undead
 poisonres 100
 coldres 100
+charmres 
 diseaseres
 sleepres
 fast                             # The monster has 4 AP and also moves twice on the battlefield per turn in combat.
@@ -15817,6 +15843,38 @@ allitemslots                     # Has the full set of item slots.
 nametype                      14 # French & Spanish.
 descr "The Vespertine Courts are shadowy tribunals operating under the authority of the Holy Church of El. Meeting in secret, these courts pass judgment on the accused in absentia, relying on collected evidence, rumors, or divine revelations to determine guilt. Their rulings are swift and absolute and carried out by unseen agents. These courts claim to uphold divine law, rooting out heresy and corruption where traditional justice falters. However, their clandestine nature and lack of accountability have bred fear and suspicion. Whispers of fabricated charges, and politically motivated trials abound, though few dare speak openly against them."
 
+newweapon     "Sermon of Conversion"                                                # 498
+trgrank              9 # Target: any enemy in range.
+range                5
+init                 4
+dmgtype             14 # Charm.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  0 # Area: single target.
+mr                     # Resisted by rolling 2d4 < Magic Resistance.
+an                     # Armor negating.
+mind                   # Doesn't affect mindless units.
+affecthuman            # Only affects humans.
+morale                 # Resisted by rolling 1d10 < Morale.
+flymode              8 # Slow line, one for each strike or square hit.
+flylook            149
+flysound            94 # 
+
+newmonster "Preacher"
+spr1 "Sprites/Preacher1.tga"
+spr2 "Sprites/Preacher2.tga"
+rank 0
+hp 5
+mr 6
+mor 5
+str 4
+human
+holy
+allitemslots
+rangedweapon 4  "Sermon of Conversion"
+meleeweapon 0 1 #Dagger
+nametype 14
+descr "Belief in El has slowly taken over as the dominant religion in the civilized parts of Elysium. This might have something to do with the endless stream of ragged preachers roaming the countryside, loudly insisting that life under El is vastly preferable to whatever it is you're doing now. A surprising number of peasants seem to agree. Of course, it is easier to find faith when the alternative is conversion at swordpoint by one of the Church's soldiers."
+
 # ------------- Voice of El Class & Recruitment ---------------------
 
 selectclass 21 
@@ -15869,7 +15927,9 @@ addmercrec "Battle Reliquary"                  4 1 50 10 0
 	templerec
 	reclimiter "+Cardinal"
 	reclimiter "+Pontiff"
-	
+addmercrec "Preacher"								15	1	20 10	0
+		templerec
+		recxcost 12 5
 ####################################### Illusionist #######################################################
 
 # ---------- Illusionist Monster Edits ----------------# 
@@ -18851,7 +18911,7 @@ alterloc             256 # Change target location's terrain to: Pyramid of Power
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 apcost                 5 # Actual AP cost: 6.
 ainosimul              1 # An AI player may not have more than one commander plan to cast this ritual at once.
-squareench 50
+squareench 60
 summoning 
 addstring "Pyramid of Power"
 gainrit 1
@@ -28517,4 +28577,3 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
-	
