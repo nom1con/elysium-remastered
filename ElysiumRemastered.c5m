@@ -1734,6 +1734,7 @@ fast
 nobootslots
 shield
 frontpos
+size1x1
 descr "The bleached bones of a knight, refusing to rest before some long forgotten oath is fulfilled."  
 
 newmonster "Ancient Warrior"
@@ -2096,7 +2097,7 @@ addstring     "(-78)2*Wight"
 addstring     "(-78)2d2+1*Ancient Warrior"
 addstring     "(-78)2d2*Ghoul"
 addstring     "(-78)2*Pale Rider"
-descr "Summon one or more minor undead that haunts Elysium such as wights or longdead warriors. Living creatures attracted by necromantic magic will sometimes appear instead."
+descr "Summon one or more minor undead that haunt Elysium, such as wights or longdead warriors. Living creatures attracted by necromantic magic will sometimes appear instead. If cast in Hades more powerful servants may answer the call."
 
 # Mummification moved to level 1, but get some learning restrictions so you dont start with it
 
@@ -2157,7 +2158,7 @@ addstring     "1d2*Ziz"
 addstring     "(-25)1*Unfrozen Mage & 2d6*Unfrozen Warrior"
 addstring     "(-27)1*Dust Priest & 2d6*Dust Walker"
 addstring     "1*Bodak"	
-descr "This incantation will summon forth powerful undead servants, such as Banshees, Wraiths and Death Knights."
+descr "This incantation will summon forth powerful undead servants, such as Banshees, Wraiths and Death Knights. If cast in Hades more powerful servants may answer the call."
 
 # Shadow woods is such an evocative terrain, but didnt really serve a purpose before. Necro can now open a path to hades there. Gulthias trees has double function of killing ancient forests and serving as gate keepers.  
 
@@ -11245,8 +11246,9 @@ healonterr -44
 selectmonster "Champion of Flames"
 spr1 "Sprites/Championofflames1.tga"
 spr2 "Sprites/Championofflames2.tga"
-clearweapons 
 hp 23
+clearweapons 
+spellweapon                3   1 # Pyromancy at level 1.
 meleeweaponspec           20  13 # Lance Charge: d20 Pierce damage.
 meleeweapon                3 173 # Fire Brand: d10 Slash damage.
 meleeweaponbonus           6 "Burning Bite" # d6 slash + d3 fire damage.
@@ -11518,6 +11520,7 @@ selectmonster "Champion of Mountains"
 spr1 "Sprites/Championofmountains1.tga"
 spr2 "Sprites/Championofmountains2.tga"
 clearweapons
+spellweapon                6   1 # Geomancy at level 1.
 meleeweaponspec           20  13 # Lance Charge: d20 Pierce damage.
 meleeweapon                7   2 # Broadsword: d13 Slash damage.
 meleeweapon               6 767 # Head-Butt: d6 Blunt damage.
@@ -11550,6 +11553,7 @@ selectmonster "Champion of Storms"
 spr1 "Sprites/Championofstorms1.tga"
 spr2 "Sprites/Championofstorms2.tga"
 clearweapons 
+spellweapon                5   1 # Storm Magic at level 1.
 meleeweaponspec           19 186 # Lightning Lance: d19 Pierce damage.
 meleeweapon                3   2 # Broadsword: d9 Slash damage.
 meleeweaponbonus           6 93 # Beak: d6 Blunt damage.
@@ -18986,7 +18990,6 @@ cost             13  25 # 25 Lifeforce
 cost              0   25 # 25 Gold
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
-apcost                 2 # Actual AP cost: 3.
 addstring     "Brass Man"
 descr "The Scourge Lord constructs a statue of a brass man and enchants it with stolen life force to give it false life. It will siphon a small amount of life force from the surrounding lands and pass it to the Scourge Lord."
 
@@ -18997,7 +19000,7 @@ cost             13   50 # 50 Lifeforce
 terr                 -42 # Required terrain: any land.
 summoning                # The ritual will summon the monsters specified in a random string.
 addstring     "2d3*Hyena"
-addstring     "Dark Centipede"
+addstring     "1*Dark Centipede"
 addstring     "1d4*Black Ant & 1d2*Black Soldier Ant & 1d1-1 Scourge Ant"
 addstring     "1d2*Black Spider & 2d2*Spiderling"
 addstring     "2d2*Vulture"
@@ -19011,7 +19014,6 @@ summoning                # The ritual will summon the monsters specified in a ra
 sum0chance 5
 sum1chance 20
 addstring "c*Scourge Ant Queen & 1d6*Black Soldier Ant"
-addstring "2d8*Ghoul"
 addstring "1*Desert Wraith"
 addstring "1d2*Dark Serpent"
 addstring "1*Scourge Worm"
@@ -21096,17 +21098,25 @@ growoffs -2
 selectclass 27
 mercboost -100
 addcomrec   "Red Dragon Spawn Chief"           15 15 20 5 # only where Ruby income.
-recxcost     7 10   
-recterr -81
+	recxcost     7 10   
+	recterr -81
+	reclimiter  "+Red Kobold Prophet"           
+	reclimiter  "+Red Kobold King"
 addcomrec   "White Dragon Spawn Chief"         15 15  20 5 # only where Diamond income.
-recxcost     9 10	
-recterr -83
+	recxcost     9 10	
+	recterr -83
+	reclimiter  "+White Kobold Prophet"           
+	reclimiter  "+White Kobold King"
 addcomrec   "Green Dragon Spawn Chief"         15 15 20 5 # only where Emerald income.
-recxcost    10 10   
-recterr -84
+	recxcost    10 10   
+	recterr -84
+	reclimiter  "+Green Kobold Prophet"            
+	reclimiter  "+Green Kobold King"
 addcomrec   "Blue Dragon Spawn Chief"          15 15 20 5 # only where Sapphire income.
-recxcost     8 10 
-recterr -82
+	recxcost     8 10 
+	recterr -82
+	reclimiter  "+Blue Kobold Prophet"            
+	reclimiter  "+Blue Kobold King"
 addmercrec  "Fire Drake"                       15 1 20 0 0 # only where Ruby income.
 recxcost    16 10 
 recterr -81
@@ -21125,7 +21135,7 @@ addmercrec "Black Kobold Spider Rider"         15 2 20 0 5 # only where Emerald 
 recxcost    16   5  
 	reclimiter  "$Dusk Dragon"                    # +1% chance per Dusk Dragon owned.
 	reclimiter  "$Elder Dragon"                   # +1% chance per Elder Dragon owned.
-recterr -84
+	recterr -84
 	reclimiter "+Black Kobold Slayer Shaman"
 	reclimiter "+Black Kobold Slayer Prophet"
 addcomrec   "Black Kobold Slayer Shaman"        2      40  20    0 # 
@@ -28577,3 +28587,4 @@ newmonster "Netherstestguy"
 	immortal
 	immortalap 1
 	descr "Is he the true god of this realm? No; he's the debug guy sent to test and explore. Gathers everything, generates enough gold and trade to buy any resource, has powerful debug rituals and is immortal to the highest degree. Not indended for a normal game. Make sure you remove the code that added him when you're done."
+	
