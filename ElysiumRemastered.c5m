@@ -487,6 +487,7 @@ stationary
 immobile
 stupid
 nozoc
+nocombat
 unimportant
 inanimate
 stealth
@@ -2364,7 +2365,8 @@ sacr              1 # Sacrifices:  1
 dead              5 # Starts with 5d6 corpses
 pop               3 # Population level:  3
 apcost            3 # Action Point cost for moving through the terrain: 3
-batmap 15 			# Natural cave batmap
+batmap 15 	    # Natural cave batmap
+citadel
 
 selectterr 825
 name "Opened Pyramids"
@@ -2397,6 +2399,30 @@ batmap           36 # Battle map: ziggurat.
 walls           	# Siege weapons can be used in battles fought in this terrain square.
 temple              # The terrain counts as a temple.  Also guarantees a minimum Relic income of 2 (before applying bonusrelics, if applicable).
 
+selectterr 828
+name                 "Tar Pit"
+spr "Sprites/Tarpit.tga"
+gold              1 # Gold:  1
+dead              3 # The location starts with 3 * d6 corpses in it.
+apcost            2 # Action Point cost for moving through the terrain: 2
+desert              # The terrain counts as a desert for the purposes of abilities like Desert Move.
+destroyto 117       #desert
+
+selectterr 829
+name "Desecrated Temple Pyramid"
+spr "Sprites/Desecratedtemplepyramid.tga"
+gold              1 # Gold:  1
+fungus            1 # Fungus:  1
+sacr              5 # Sacrifices:  5
+dead             10 # The location starts with 10 * d6 corpses in it.
+apcost            2 # Action Point cost for moving through the terrain: 2
+batmap           36 # Battle map: ziggurat.
+walls               # Siege weapons can be used in battles fought in this terrain square.
+ownable             # The terrain can be claimed for ownership even if it provides no income the player can use.
+smoke               # Pixels with a certain pink color (245,0,255) will produce smoke. Pixels with color (235,0,255) will produce flames and smoke.
+temple              # The terrain counts as a temple.  Also guarantees a minimum Relic income of 2 (before applying bonusrelics, if applicable).
+voidret             # If placed when the map is generated, this terrain will have a one-way portal from the Void.
+
 selectterr 91		# Ship Stones	
 destroyto 822   	# Desecrated Ship Stones
 
@@ -2414,17 +2440,30 @@ destroyto 825		# opened pyramids
 selectterr 167		# Ziggurat
 destroyto 827		# Desecrated Ziggurat
 
+selectterr 354 #Mausoleum
+destroyto 0 #plains 
+
+selectterr 93
+destroyto 829
+
 selectterrgroup -1100
 setname "Greater Reanimation Sites"
 addterr 91
+addterr 93
+addterr 354
 addterr 100
 addterr 157
 addterr 165
 addterr 167
+addterr 807
 addterr 820
 addterr 821
+addterr 828
+addterr 856
+addterr 858
 
 # spawn dragon bones and chained titans in Hades. Always at least one set of dragon bones. 
+# chance to spawn a tar pit in Elysium 
 
 playerevent
 +turnnbr -1
@@ -2451,6 +2490,15 @@ squareevent
 +plane 5
 +terrain 150 					# Shade Land
 alterterrain 821				# Chained Titan
+endevent
+
+playerevent #Tar Pit
++turnnbr -1
++player 25
++chance 20
+randloc 0 117
++terrain 117
+alterterrain 828
 endevent
 
 selectmonster "Tartarian Spirit"
@@ -2525,8 +2573,7 @@ poisonres 100
 coldres 100
 nametype                       7 # Greek male.	
 randommisc 25
-unique 1
-descr "This levitating husk was once an ancient beholder, worshipped as a god by the pygmy tribes. It now serves the will of a masterful necromancer. The creature is silent, obedient, and dangerous. It also never stops staring. The effect is deeply unsettling, and it takes a truly unhinged person to tolerate it for long. Turning it to face the wall does not help; it just slowly rotates back around like a compass."
+descr "This levitating husk is the preserved remains of an ancient beholder once venerated as a deity by certain pygmy tribes. It has since been reanimated under the control of a skilled necromancer. The creature is silent, obedient, and dangerous. It also never. Stops. Staring. Turning it to face the wall does not help; it just slowly rotates back around like a bobbing compass."
 
 newmonster "Dread Manticore"
 spr1 "Sprites/Dreadmanticore1.tga"
@@ -2534,12 +2581,13 @@ spr2 "Sprites/Dreadmanticore2.tga"
 rank 1
 hp 175
 armor 3
-mr 6
+mr 7
 mor 99
-str 18
-rangedweapon 15 144 #Flick barb # 10, 18 8 for original - 15, 25 12
-meleeweapon 25 297 #Ghoul Claw
-meleeweapon 12 41 #Venomous Bite
+str 12
+rangedweapon 		   15 144 #Flick barb d15 piercing 
+meleeweapon                25  12 # Claw: d25 Slash damage.
+meleeweapon                12 143 # Stinger: d12 Pierce damage.
+meleeweapon 		   12 11 #Bite d12
 huge
 coldres 100
 poisonres 100
@@ -2549,7 +2597,6 @@ sleepres
 charmres
 diseaseres
 water
-minorstartaff 70
 affres 80
 fear 2
 nametype 49
@@ -2605,7 +2652,7 @@ sound               57 # orchhit.smp (Summoning)
 newmonster "Draugadrott"
 spr1 "Sprites/Draugadrott1.tga"
 spr2 "Sprites/Draugadrott2.tga"
-hp                   20
+hp                   23
 str                   7
 mor                  15
 mr                    8
@@ -2613,7 +2660,7 @@ armor                 2
 rank 0
 meleeweapon 4 "Broadsword"
 rangedweaponbonus 1 "Summon Ghost Wolf" 
-spellweapon 27   1 # Frost Magic at level 1.
+spellweapon 27   2 # Frost Magic at level 2.
 spellweapon  38 1 #necromancy level 1 
 snow
 coldaura         1
@@ -2707,6 +2754,7 @@ mr                             10
 rank                           -1 # Back rank.
 meleeweapon                8 501 # Touch of the Dead: d14 Cold damage.
 spellweapon         10    2 # Foul Magic at level 2.
+spellweapon               62   1 # Defilement at level 1.
 coldres                      100 # Cold immunity.
 poisonres                    100 # Poison immunity.
 fireres                     -100 # 100 Fire Vulnerability.
@@ -2765,11 +2813,11 @@ nextdmg           2048 # Weakness
 
 newweapon     "Cacophonous Howl"                                             # 691
 trgrank              9 # Target: any enemy in range.
-range                7
+range                8
 init                 2
 dmgtype              8 # Fear.
 dmg                  10 
-aoe               4025 # Area: wide cone, 25 squares.
+aoe               4035 # Area: wide cone, 35 squares.
 an                     # Armor negating.
 onlyenemy              # Only affects enemy units.
 look                 5
@@ -2803,27 +2851,390 @@ unaging                          # Immune to aging effects like decay.
 affres 100
 descr "The Tormented Hosts are believed to be the lingering remnants of sacrificial victims from the era of Baal. Their suffering did not fade but accumulated over centuries, saturating the stones of the god's abandoned ziggurats. Though they have no form of their own, necromancers can coax them into manifestation, shaping them into drifting, spectral entities. The Hosts do not think or speak. When summoned, they reach toward the living as if pleading for release, but their touch drains vitality, and their howls unnerve even the most disciplined minds."
 
+newmonster "Reassembled"
+spr1 "Sprites/Reassembled1.tga"
+spr2 "Sprites/Reassembled2.tga"
+armor                          1 # Armor.
+hp                            20 # Hit Points.
+str                            6 # Strength.
+mor                            8 # Morale.
+mr                             10 # Magic Resistance.
+rank                           1 # Front rank.
+spellweapon          38   3 # Necromancy at level 3.
+meleeweapon                5  11 # Bite: d5 Slash damage.
+meleeweapon                2 501 # Touch of the Dead: d8 Cold damage.
+pierceres
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+allitemslots                     # Has the full set of item slots.
+banishsurv                       # Banished to Hades/Inferno/home instead of being destroyed.
+power                       1  1 # Necromancy, level 1.
+largeshield
+saner                          3 # Regains 3 sanity per month.
+voidsanity 			5
+sensedead                      1 # Can sense the number of corpses of all types in current square.
+power                       1  1 # Necromancy, level 1.
+startinsanity 65
+nametype 5
+size2x2 
+immortal
+reformloc 1000
+descr "The Sauromancers of old were the first to practice true necromancy. In the final days of their empire, as collapse spread like rot through the marsh-states, it became clear that certain masters of the dark arts could not be permitted to rise again. Their bodies were ceremonially dismantled and sealed in magical jars beneath the temple pyramids. This was, according to most records, effective.^^It is now understood that a modern necromancer of questionable judgment has located and reassembled one of original dark masters. The resulting entity displays extraordinary necromantic power and a deeply fractured mind. Much of his magical knowledge appears to have been lost to the centuries. While unquestionably effective on the battlefield, he occasionally issues orders to long-defunct legions, converses with dead colleagues, or attempts to reclaim authority over provinces that no longer exist. ^^His service is a boon, provided one is willing to tolerate a certain administrative confusion."
+
+newweapon "Burden of Memory"
+trgrank              0 # Target: self.
+range                0
+init                 4
+dmgtype             12 # Special damage (determined by bitmask where this attack is used).
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe               9999 # Area: all squares.
+hardmr                 # Resisted by rolling 2d6 < Magic Resistance.
+undead                 # Doesn't affect undead units.
+inanimate              # Doesn't affect Lifeless units.
+mind		       # Doesn´t affect mindless units 
+flymode              2 # Standard particle effect, one for each strike or square hit.
+flylook            134
+look               146 # 229 Vafur Death måske 
+sound              108 # sizzle.sw
+
+newweapon "Soul Drain "
+trgrank              9 # Target: any enemy in range.
+range                6
+init                 4
+dmgtype              7 # Magic.
+dmg                  4 
+aoe                 -3 # Area: 3 targets.
+drain                  # Inflicted damage added to attacker's hit points.
+an                     # Armor negating.
+inanimate              # Doesn't affect Lifeless units.
+flymode              5 # Line, one for each strike or square hit.
+flylook             75
+flysound            18 # drain.smp (Life Drain)	
+
+newmonster "Shadow of Regrets"
+spr1 "Sprites/Shadowofregrets1.tga"
+spr2 "Sprites/Shadowofregrets2.tga"
+armor                          0 # Armor.
+hp                            32 # Hit Points.
+str                           8 # Strength.
+mor                           15 # Morale.
+mr                            9 # Magic Resistance.
+rank                           1 # Front rank.
+prebatweapon 2048 "Burden of Memory"
+rangedweaponbonus 0 "Soul Drain "
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+float                            # -1 AP to enter terrain (min 1), can float in sky or over water without fatiguing, and immune to ground attacks.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+spiritsight                      # Can see units with Stealth, Forest Stealth, or Invisible.
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+ethereal                         # 75% chance to be unaffected by mundane weapons; can pass through walls.
+size2x2                          # Takes up 2x2 squares on the battlefield (overrides sprite size).
+vengeance                      1 # Blood Vengeance (+0): anyone harming this unit must make a Magic Resistance check or take the damage themself instead.
+fear                           2 # Causes Dread (1d8 vs morale) within 2 squares.
+saner                         5 # Regains 10 sanity per month.
+homeplane                      5 # Hades.  Will return to this plane if slain outside it and be indep controlled again.
+reformloc                     152 # If killed, the monster will reform in a random instance of this terrain: Dark Citadel.
+banishsurv
+nametype 5
+descr "As recorded in the Sealed Lectures of Tyr Ephren:'Regret is not merely emotion. It is a trace left when the soul passes consciously through time.'^^In rare places where enough lives end unfinished, that trace may gather. Given time and silence, it can become stable. And if something stable enough forms, it may take on shape, and a will, of sorts."
+
+newweapon     "Greater Mind Blast"                                                # 306
+trgrank              1 # Target: front enemy (any enemy in range, preferring front-most).
+range               10
+init                 8
+dmgtype              7 # Magic.
+dmg                  0 # Base damage (added to dmg value where this weapon is used).
+aoe                  9105 # Area: chain lightning, 5 targets distance 1.
+hardmr                 # Resisted by rolling 2d6 < Magic Resistance.
+an                     # Armor negating.
+mind                   # Doesn't affect mindless units.
+look                 3
+sound               22 # fear.smp (Fear)
+nextwep            212 # Extra effect if target is affected: 212: aff (mr).
+nextdmg             16 # Paralyzation
+
+newmonster "Risen Olm" 
+spr1 "Sprites/Risenolm1.tga"
+spr2 "Sprites/Risenolm2.tga"
+armor                          0 # Armor.
+hp                            75 # Hit Points.
+str                            7 # Strength.
+mor                           15 # Morale.
+mr                            8 # Magic Resistance.
+rank                          -1 # Back rank.
+spellweapon                8   2 # Unlife at level 2.
+rangedweaponbonus         5  "Greater Mind Blast"
+meleeweapon               8  10 # Life Drain: d8 Magic damage.
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+slow                             # The monster only has 2 AP.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+voidsanity                    20 # Void Sanity: 20: reduces insanity gains (like armor).
+fear                           1 # Causes fear (1d7 vs morale) within 2 squares.
+nametype 51
+descr "We ventured deeper into the labyrinth, drawn by the unnatural symmetry of its halls and the faint echoes of water in the stone. The construction was unlike anything recorded—no tool marks, no seams, and passages that twist in ways unfriendly to surface-born minds. In the deepest chamber we found a body. It was curled in repose, dry and pale, but unmistakably akin to the blind olms of the upper caves. This one, however, was of great size, and draped in crumbling regalia of calcified bone and gold leaf. There were carvings nearby, abstract but intentional, and channels in the floor that may once have carried water or blood.^^We do not know what it was. A king? A builder? A priest? Perhaps all three. We left it undisturbed, but the others reported feeling watched on the way out. I have since heard that others returned to that place, but found the chamber deserted.^^I recommend we seal the descent. The lower tunnels are not empty."
+
+newmonster "Damned Admiral"
+spr1 "Sprites/Damnedadmiral1.tga"
+spr2 "Sprites/Damnedadmiral2.tga"
+hp 14
+str                            4 # Strength.
+mor                            6 # Morale.
+mr 8
+rank                           -1 #
+meleeweapon50s             6 158 # Spectral Sword: d6 Magic damage.
+meleeweapon                6  10 # Life Drain: d10 Magic damage.
+spellweapon                8   2 # Unlife at level 2.
+ethereal
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+affres 100
+fear 2 
+stupid
+wander 19
+aggressive
+nametype 2
+descr "The Damned Admiral is the ghost of a naval commander reanimated from the wreck of a sunken flagship. He continues to act as if he were alive, issuing orders and directing the crew as before. The necromantic ritual that raised him bound both spirit and ship to the summoner's will."
+
+newmonster "Damned Captain"
+spr1 "Sprites/Damnedcaptain1.tga"
+spr2 "Sprites/Damnedcaptain2.tga"
+hp 10
+str                            4 # Strength.
+mor                            6 # Morale.
+mr 7
+rank                           0 # Mid rank.
+frontpos
+meleeweapon50s             6 158 # Spectral Sword: d6 Magic damage.
+meleeweapon                6  10 # Life Drain: d10 Magic damage.
+spellweapon                8   1 # Unlife at level 1.
+ethereal
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+fear 1
+followstupid
+descr "The Damned Captain is the spectral remains of a drowned officer recovered from a shattered warship. He resumes his former role without question, taking command of the dead crew and maintaining the routines of a ship long lost to the sea."
+
+newmonster "Damned Ship"
+copystats "Galleon" 
+spr1 "Sprites/Damnedship.tga"
+drawsize -30
+spawnmon 100
+descr "It was spotted just off the reef, drifting against the wind with no sail raised and no crew in sight. Old Raskin swore it passed within bowshot, silent as a grave. He said the rigging moved like it was being handled, and lights flickered below deck where no lanterns should burn. The ship itself looked wrong, half-rotted, but holding together like it didn’t know it had sunk. Raskin called it a warship, or what was left of one, and said the name on the hull had been scratched away. He didn’t stick around to learn more. The next morning, two gulls were dead on the dock and the water smelled like rust. No one’s seen the ship since, but if the tides shift just right, folks say you can still hear a bell ringing from somewhere out at sea."
+                  
+newmonster "Damned Pirate"
+copystats "Ghost Warrior"
+spr1 "Sprites/Damnedpirate1_1.tga"
+spr2 "Sprites/Damnedpirate1_2.tga"
+growtime 20
+followstupid
+descr "The Damned Pirate is a ghost reanimated from the remains of a wrecked raiding vessel. In death, he behaves much as he did in life, fighting for whoever controls the ship and showing little concern for the circumstances of his return."
+
+newmonster "Damned Pirate "
+copystats "Ghost Warrior"
+spr1 "Sprites/Damnedpirate1_1.tga"
+spr2 "Sprites/Damnedpirate1_2.tga"
+dmgonterr -1
+dmgonterrbonus 999
+followstupid
+descr "The Damned Pirate is a ghost reanimated from the remains of a wrecked raiding vessel. In death, he behaves much as he did in life, fighting for whoever controls the ship and showing little concern for the circumstances of his return."
+
+newmonster "Damned Pirate"
+spr1 "Sprites/Damnedpirate2_1.tga"
+spr2 "Sprites/Damnedpirate2_2.tga"
+hp 6
+armor 1
+str                            4 # Strength.
+mor                            6 # Morale.
+mr 6
+rank                           1 # front rank.
+meleeweapon50s             6 158 # Spectral Sword: d6 Magic damage.
+ethereal
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+growtime 20
+followstupid
+descr "The Damned Pirate is a ghost reanimated from the remains of a wrecked raiding vessel. In death, he behaves much as he did in life, fighting for whoever controls the ship and showing little concern for the circumstances of his return."
+
+newmonster "Damned Pirate "
+spr1 "Sprites/Damnedpirate2_1.tga"
+spr2 "Sprites/Damnedpirate2_2.tga"
+hp 6
+armor 1
+str                            4 # Strength.
+mor                            6 # Morale.
+mr 6
+rank                           1 # front rank.
+meleeweapon50s             6 158 # Spectral Sword: d6 Magic damage.
+ethereal
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+growtime 20
+followstupid
+dmgonterr -1
+dmgonterrbonus 999
+followstupid
+descr "The Damned Pirate is a ghost reanimated from the remains of a wrecked raiding vessel. In death, he behaves much as he did in life, fighting for whoever controls the ship and showing little concern for the circumstances of his return."
+
+newmonster "Damned Pirate"
+spr1 "Sprites/Damnedpirate3_1.tga"
+spr2 "Sprites/Damnedpirate3_2.tga"
+hp 7
+str                            4 # Strength.
+mor                            6 # Morale.
+mr 7
+rank                           1 # Mid rank.
+meleeweapon50s             6 158 # Spectral Sword: d6 Magic damage.
+meleeweapon                3  10 # Life Drain: d3 Magic damage.
+ethereal
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+fear
+followstupid
+growtime 20
+descr "The Damned Pirate is a ghost reanimated from the remains of a wrecked raiding vessel. In death, he behaves much as he did in life, fighting for whoever controls the ship and showing little concern for the circumstances of his return."
+
+newmonster "Damned Pirate "
+spr1 "Sprites/Damnedpirate3_1.tga"
+spr2 "Sprites/Damnedpirate3_2.tga"
+hp 7
+str                            4 # Strength.
+mor                            6 # Morale.
+mr 7
+rank                           1 # Mid rank.
+meleeweapon50s             6 158 # Spectral Sword: d6 Magic damage.
+meleeweapon                3  10 # Life Drain: d3 Magic damage.
+ethereal
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+followstupid
+dmgonterr -1
+dmgonterrbonus 999
+descr "The Damned Pirate is a ghost reanimated from the remains of a wrecked raiding vessel. In death, he behaves much as he did in life, fighting for whoever controls the ship and showing little concern for the circumstances of his return."
+
+newmonster "Longdead Leviathan"
+spr1 "Sprites/Longdeadleviathan1.tga"
+spr2 "Sprites/Longdeadleviathan2.tga"
+armor                          3 # Armor.
+hp                           325 # Hit Points.
+str                            12 # Strength.
+mor                            99 # Morale.
+mr                             7 # Magic Resistance.
+rank                           1 # Front rank.
+meleeweapon               45  11 # Bite: d45 Slash damage.
+meleeweapon               12 485 # Tail Sweep: d12 Blunt damage.
+trample 5
+fear 2 
+fast
+huge                             # The monster is Huge (3x3 squares in size), can step over walls in combat, and uses one less AP than normal to move into any terrain square.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+noland                           # Aquatic: The monster cannot move onto land.
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+stupid
+wander 18
+aggressive
+nametype 44
+descr "I was on the western watchpost when it surfaced. No storm, no wind — just a rise in the sea like something enormous had shifted below. At first we thought it was drift ice or a reef come loose, but then we saw the shape. The thing was twice the length of a coastal village, its body broken and crusted with coral, with weathered bones showing clear beneath. It drifted against the current, turned once, and sank again without a sound. The old scholars say it´s a whale that died long before men ever mapped the coast. I don’t know who raised it or why, but I haven’t fished those waters since."
+
+newmonster "Tar Fossil"
+spr1 "Sprites/Tarfossil1.tga"
+spr2 "Sprites/Tarfossil2.tga"
+armor                          3 
+hp                            110 
+str                            12 
+mor                           99 
+mr                             5 
+rank                           1 # Front rank.
+meleeweapon               30  11 # Bite: d30 Slash damage.
+meleeweapon                5 485 # Tail Sweep: d5 Blunt damage.
+water                            # Amphibian: The monster can enter water squares and is immune to drowning damage.
+huge
+fireres 		     100 # Fire immunity 
+coldres                      100 # Cold immunity.
+poisonres                    100 # Poison immunity.
+shockres                     100 
+undead
+sleepres                         # Sleep immunity.
+charmres                         # Charm immunity.
+diseaseres                       # Disease immunity.
+pierceres                        # Pierce resistance (half damage).
+slashres                         # Slash resistance (half damage).  
+unaging
+stonebeing 
+descr "The discovery of fossilized remains in Elysium's tar pits has stirred debate among the faculties, particularly those concerned with natural history, sacred chronology, and divine aesthetics. The bones, immense and reptilian, seem to suggest the former existence of creatures wholly unsuited to current ecosystems, or indeed, to moral sensibility. Their presence unsettles the established sequence of creation, civilization, and documented cataclysm.^^Some claim the fossils belong to antediluvian beasts drowned in an early, unsanctioned flood. Others insist they are the bones of demons that once posed as animals to mislead early man. A minority maintains they are merely rocks, coincidentally bone shaped.^^In truth, the explanation is obvious. The fossils are not remnants of real organisms, but pedagogical illusions placed by El to pique philosophical curiosity. Just as stars exist primarily to inspire poets.^^While lesser theories persist, it is clear that the bones must not be taken at face value. To do so would be to treat material evidence as meaningful in itself, a methodological error the Academy has long warned against."
+
 newritual "Greater Reanimation"  
 ritpow                 1 # Necromancy
 level                  3
-cost              5   150 # 150 Hands
+cost              5   120 # 120 Hands
 terr                 -1100 # Required terrain: Greater Reanimation Sites.
 destroyterr 100
 summoning                # The ritual will summon the monsters specified in a random string.
+insanity 20
 sum0chance 100
-addstring "(91)c*Draugadrott & 2d6*Draug & 1d3*Jotun Draug"
+addstring "(91)c*Draugadrott & 2d6*Draug & 1d3+1*Jotun Draug"
 addstring "(100)c*Dread Manticore"  
 addstring "(157)c*Death Tyrant"
-addstring "(165)c*Royal Mummy & 9*Tomb Guard"
+addstring "(165)c*Royal Mummy & 12*Tomb Guard"
+addstring "(167)c*Tormented Host"
 addstring "(820)c*Dracolich"
 addstring "(821)c*Tartarian Spirit"
-addstring "(167)c*Tormented Host"
-nomonhomereq 
-addstring "(-)Draugadrott"
-addstring "(-)Royal Mummy"
+addstring "(828)1*Tar Fossil"
+addstring "(93)c*Reassembled"
+addstring "(354)c*Shadow of Regrets"
+addstring "(807)c*Risen Olm"
+addstring "(856)c*Damned Admiral & 1*Damned Ship & 1*Damned Captain & 20*Damned Pirate & 4*Ballista"
+addstring "(858)c*Longdead Leviathan"
 aialways 999
 ainosimul
-descr "The necromancer seeks out the tomb of a great ancient monster, and raises it as a powerful undead servant. Can be cast in places such as labyrinths, pyramids, skull caves, ship stones, draconic or titanic burial grounds. Only one monster can be raised from each location."
+descr "The necromancer excavates the tomb of a great ancient monster, and raises it as a powerful undead servant. Can be cast in places such as Labyrinths, Pyramids or Skull caves. Other suitable locations may exist and can be found through exploration. Only one monster can be raised from each location."
+
+selectclass 2
+classcitterr 824
+addunitrec "Pygmy" 30 5 50 0 0 0
+	recterr 824
+	reclimiter "+Death Tyrant"
 
 ############################## Demonologist ###########################################
 
@@ -5466,10 +5877,12 @@ varcost               50 		# Can set Sacrifice Level anywhere from 50 to 150. Mu
 defctrl               65 		# % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 summoning                		# The ritual will summon the monsters specified in a random string.
 rebateterr20 833 				#20% rebate on Witchmoot
-sum0chance 4
+sum0chance 5
 sum1chance 5
-addstring "c*Tatterman"
+sum2chance 5
 addstring "c*Elder Doppelganger"
+addstring "(!)0*Magic Toad Familiar"	
+addstring "(833)c*Tatterman"	
 addstring "1*Burning Skull"		
 addstring "2d3+1*Hollow One"			
 addstring "1*Doppelganger"		
@@ -5478,7 +5891,6 @@ addstring "1d2*Werewolf"
 addstring "2d2*Swamp Ghost"
 addstring "1*Will o'the Wisp"
 addstring  "2d6*Rushlight"
-addstring "(!)0*Magic Toad Familiar"		
 addstring "(88)c*Elder Doppelganger"	#Academy of higher magic	
 descr "With this ritual the Witch brews a potion to summon and control creatures that dwell in twilight and shadows. The more fungi added to the brew, the higher the chance of successfully controlling the summoned beings."
 
@@ -5511,6 +5923,8 @@ varcost               50 # Can set Sacrifice Level anywhere from 50 to 150. Mult
 defctrl               55 # % default control chance for summonings. Can be overridden by monster's own ctrlchance.
 aialways             999 # AI will always try to cast this ritual, and make long term plans to do so.
 summoning                # The ritual will summon the monsters specified in a random string.
+sum0chance 5
+addstring "(!)0*Black Toad Familiar"
 addstring "1*Ancient Presence"
 addstring "1*Ancient Hydra"
 addstring "1*Wyrm"
@@ -5518,7 +5932,6 @@ addstring "1*Swamp God"
 addstring "(-101)1*Pale Beast" #Snowy Location
 addstring "1*Great Weaver"
 addstring "c*Worm Soul"
-addstring "(!)0*Black Toad Familiar"
 descr "With this ritual the Witch will brew a decoction that is used to awaken and control one of the Old Ones.  The Old Ones slumber in the swamps and the ritual can only be performed there.  The more fungi used, the greater the chance of managing to control the Old One."
 
 newritual "Dark Bargain"
@@ -7994,7 +8407,6 @@ str                            5
 mor                            6 
 mr                             5 
 rank                           1 # Front rank.
-rearpos
 meleeweapon                3   3 # Axe: d10 Slash damage.
 human                            
 largeshield                      # Reduces damage from most weapons by 0-1; 0-2 against ranged weapons.
@@ -24023,6 +24435,7 @@ lifeforce        10 # 1 Lifeforce can be drained from this square per turn.
 apcost            2 # Action Point cost for moving through the terrain: 2
 seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
 visible
+destroyto 69
 
 selectterr 857
 name "Underwater Ruins"
@@ -24045,6 +24458,7 @@ lifeforce        20 # 1 Lifeforce can be drained from this square per turn.
 apcost            2 # Action Point cost for moving through the terrain: 2
 seepast             # Remote Horizon (can see 1 square past this one when adjacent to it).
 visible
+destroyto 68
 
 				# ---------- Sea Spawning Events -----------------------
 
