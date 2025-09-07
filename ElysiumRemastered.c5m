@@ -19468,7 +19468,7 @@ addstring "Scourge King"
 addstring "Dark One"
 soundfx               57 # Sound effect when the ritual is cast: orchhit.smp (Summoning).
 gainrit -1
-descr "The Scourge King abandons his mortal shell, and becomes something else. This will grant the caster a new fourth level ritual."  
+descr "The Scourge King abandons his mortal shell, and becomes something else. This will grant the caster a new third level ritual."  
 
 selectritual     "Lesser Ritual of Scourge Mastery"                           # 426
 level 9
